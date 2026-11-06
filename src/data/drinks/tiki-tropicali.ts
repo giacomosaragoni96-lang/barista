@@ -18,7 +18,7 @@ export const drinks: Drink[] = [
       { id: 'pineapple-juice', amount: 120, unit: 'ml' },
       { id: 'orange-juice', amount: 30, unit: 'ml' },
       { id: 'coconut-cream', amount: 30, unit: 'ml' },
-      { id: 'grated-nutmeg', unit: 'pinch', optional: true },
+      { id: 'grated-nutmeg', amount: 1, unit: 'pinch', optional: true },
       { id: 'pineapple-wedge', amount: 1, unit: 'wedge', optional: true },
     ],
     garnish: l('Noce moscata fresca e spicchio di ananas', 'Fresh grated nutmeg and pineapple wedge'),

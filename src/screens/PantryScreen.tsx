@@ -71,9 +71,9 @@ export default function PantryScreen() {
           <Icon name="chevron-left" className="rotate-180 text-muted" />
         </button>
 
-        <div className="mt-3 flex gap-3">
-          <Button className="flex-1" onClick={() => (pantry.size ? setConfirm('kit') : addMany(BASIC_KIT))}>{t.pantry.loadKit}</Button>
-          <Button variant="ghost" disabled={pantry.size === 0} onClick={() => setConfirm('clear')}>{t.pantry.clearAll}</Button>
+        <div className="mt-3 flex flex-wrap gap-3">
+          <Button className="min-w-0 flex-1 !px-3" onClick={() => (pantry.size ? setConfirm('kit') : addMany(BASIC_KIT))}>{t.pantry.loadKit}</Button>
+          <Button variant="ghost" className="!px-4" disabled={pantry.size === 0} onClick={() => setConfirm('clear')}>{t.pantry.clearAll}</Button>
         </div>
 
         {groups.length === 0 && <EmptyState title={t.pantry.noResults} />}

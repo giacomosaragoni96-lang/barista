@@ -36,6 +36,7 @@ export const en: Dict = {
     favoriteRemove: 'Remove from favorites',
     min: 'min',
     restart: 'Start over',
+    toTaste: 'to taste',
     tipTitle: 'Bartender tip',
     replacing: (x: string) => `instead of ${x}`,
     undo: 'Undo',

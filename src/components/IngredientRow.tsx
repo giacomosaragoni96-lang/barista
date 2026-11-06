@@ -8,13 +8,15 @@ interface Props {
   state: 'normal' | 'missing' | 'substituted'
   /** nome originale, se sostituito */
   replacedName?: string
+  /** nota del sostituto scelto */
+  substituteNote?: string
   /** dispensa attiva: true = ce l'hai, false = manca */
   pantryDot?: boolean
   onMissing: () => void
   onUndo: () => void
 }
 
-export function IngredientRow({ amount, name, note, optional, state, replacedName, pantryDot, onMissing, onUndo }: Props) {
+export function IngredientRow({ amount, name, note, optional, state, replacedName, substituteNote, pantryDot, onMissing, onUndo }: Props) {
   const t = useT()
   const flagged = state !== 'normal'
   return (
@@ -31,15 +33,16 @@ export function IngredientRow({ amount, name, note, optional, state, replacedNam
           <span className="min-w-0">{name}{optional && <span className="block text-[14.5px] font-normal text-muted">{t.drink.optional}</span>}</span>
         </span>
         {state === 'substituted' && replacedName && <span className="block text-[14.5px] text-amber">{t.drink.replacing(replacedName)}</span>}
+        {state === 'substituted' && substituteNote && <span className="block text-[13.5px] leading-snug text-amber/90">{substituteNote}</span>}
         {state === 'missing' && <span className="block text-[14.5px] text-miss">{t.drink.markedMissing}</span>}
         {note && state === 'normal' && <span className="block text-[14.5px] text-muted">{note}</span>}
       </span>
       {flagged ? (
-        <button type="button" onClick={onUndo} className="btn btn-ghost !min-h-[44px] shrink-0 !px-3 !text-[14.5px]">
+        <button type="button" onClick={onUndo} className="btn btn-ghost !min-h-[44px] shrink-0 !px-3 !text-[14.5px] min-w-[96px]">
           {state === 'missing' ? t.missing.haveIt : t.drink.undo}
         </button>
       ) : (
-        <button type="button" onClick={onMissing} className="btn btn-ghost !min-h-[44px] shrink-0 !px-3 !text-[14.5px] !text-muted">
+        <button type="button" onClick={onMissing} className="btn btn-ghost !min-h-[44px] shrink-0 !px-3 !text-[14.5px] min-w-[96px] !text-muted">
           {t.missing.dontHave}
         </button>
       )}

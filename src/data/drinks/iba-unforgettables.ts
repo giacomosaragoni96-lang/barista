@@ -7,7 +7,7 @@ export const drinks: Drink[] = [
     id: 'negroni',
     name: 'Negroni',
     aliases: ['negroni cocktail', 'negrone', 'negroni classico'],
-    description: L('Amaro, bitter e vermouth in parti uguali: il classico italiano.', 'Equal parts gin, bitter and vermouth: the Italian classic.'),
+    description: L('Gin, bitter e vermouth in parti uguali: il classico italiano.', 'Equal parts gin, bitter and vermouth: the Italian classic.'),
     base: ['gin'],
     family: 'spirit-forward',
     iba: 'unforgettable',
@@ -431,7 +431,7 @@ export const drinks: Drink[] = [
       { id: 'maraschino-liqueur', amount: 10, unit: 'ml' },
       { id: 'lemon-juice', amount: 10, unit: 'ml' },
       { id: 'angostura', amount: 2, unit: 'dash' },
-      { id: 'sugar-rim', unit: 'pinch', optional: true },
+      { id: 'sugar-rim', amount: 1, unit: 'pinch', optional: true },
     ],
     garnish: L('Bordo di zucchero e spirale di limone', 'Sugar rim and lemon spiral'),
     steps: [

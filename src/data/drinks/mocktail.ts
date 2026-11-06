@@ -568,7 +568,7 @@ export const drinks: Drink[] = [
     technique: ['build'],
     ice: 'cubes',
     ingredients: [
-      { id: 'salt-rim', unit: 'pinch', optional: true },
+      { id: 'salt-rim', amount: 1, unit: 'pinch', optional: true },
       { id: 'grapefruit-juice', amount: 90, unit: 'ml' },
       { id: 'lime-juice', amount: 15, unit: 'ml' },
       { id: 'agave-syrup', amount: 10, unit: 'ml' },

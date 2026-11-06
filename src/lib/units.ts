@@ -31,6 +31,7 @@ export function formatAmount(
   scale: number,
   lang: Lang,
 ): string {
+  if (unit === 'top') return NAMES.top[lang][0]
   if (amount === undefined || amount === null) return ''
   const v = amount * scale
   if (unit === 'ml') {
@@ -40,6 +41,5 @@ export function formatAmount(
   }
   const [one, many] = NAMES[unit][lang]
   const text = num(v, lang, unit === 'g' ? 1 : 0.25)
-  if (unit === 'top') return one
   return `${text} ${Math.abs(v - 1) < 1e-9 ? one : many}`
 }

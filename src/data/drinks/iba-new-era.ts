@@ -243,7 +243,7 @@ export const drinks: Drink[] = [
       { id: 'vodka', amount: 25, unit: 'ml' },
       { id: 'triple-sec', amount: 25, unit: 'ml' },
       { id: 'lemon-juice', amount: 25, unit: 'ml' },
-      { id: 'sugar-rim', unit: 'piece', optional: true },
+      { id: 'sugar-rim', amount: 1, unit: 'piece', optional: true },
     ],
     garnish: { it: 'Bordo di zucchero e scorza di limone', en: 'Sugar rim and lemon peel' },
     steps: [

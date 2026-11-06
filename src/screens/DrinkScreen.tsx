@@ -11,6 +11,7 @@ import { StepList } from '../components/StepList'
 import { UnitToggle } from '../components/UnitToggle'
 import { useWakeLock } from '../hooks/useWakeLock'
 import { l10n, useLang, useT } from '../i18n'
+import { getSubstitutes } from '../lib/alternatives'
 import { getDrink, ingName } from '../lib/catalog'
 import { formatAmount } from '../lib/units'
 import { back, navigate, paths, useRoute } from '../router'
@@ -48,7 +49,18 @@ export default function DrinkScreen() {
   useEffect(() => { setScale(1); setSubs({}); setMissing([]); setSheetFor(null) }, [params.id])
 
   const pantryOn = isPro && pantry.size > 0
-  const steps = useMemo(() => drink?.steps.map((s) => l10n(s, lang)) ?? [], [drink, lang])
+  const steps = useMemo(() => {
+    if (!drink) return []
+    return drink.steps.map((s) => {
+      let text = l10n(s, lang)
+      for (const [from, to] of Object.entries(subs)) {
+        const a = ingName(from, lang)
+        const i = text.toLowerCase().indexOf(a.toLowerCase())
+        if (a && i >= 0) text = text.slice(0, i) + ingName(to, lang) + text.slice(i + a.length)
+      }
+      return text
+    })
+  }, [drink, lang, subs])
 
   if (!drink) {
     return (
@@ -60,6 +72,10 @@ export default function DrinkScreen() {
     )
   }
 
+  const subNote = (orig: string, subId: string) => {
+    const n = getSubstitutes(orig).find((x) => x.ingredient.id === subId)?.note
+    return n ? l10n(n, lang) : undefined
+  }
   const isFav = fav.isFav(drink.id)
   const flames = Array.from({ length: 3 }, (_, i) => (
     <Icon key={i} name="flame" size={16} className={i < drink.difficulty ? 'text-amber' : 'text-line'} />
@@ -116,7 +132,7 @@ export default function DrinkScreen() {
             const sub = subs[di.id]
             const shownId = sub ?? di.id
             const state = sub ? 'substituted' : missing.includes(di.id) ? 'missing' : 'normal'
-            const amount = di.unit === 'top' ? t.drink.top : formatAmount(di.amount, di.unit, settings.units, scale, lang)
+            const amount = di.unit === 'top' ? t.drink.top : formatAmount(di.amount, di.unit, settings.units, scale, lang) || t.drink.toTaste
             return (
               <IngredientRow
                 key={di.id + idx}
@@ -126,6 +142,7 @@ export default function DrinkScreen() {
                 optional={di.optional}
                 state={state}
                 replacedName={sub ? ingName(di.id, lang) : undefined}
+                substituteNote={sub ? subNote(di.id, sub) : undefined}
                 pantryDot={pantryOn ? has(shownId) : undefined}
                 onMissing={() => markMissing(di.id)}
                 onUndo={() => undo(di.id)}

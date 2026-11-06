@@ -107,8 +107,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
   transition: background-color 160ms, border-color 160ms, color 160ms;
 }
 .chip[aria-pressed="true"] {
-  background: color-mix(in srgb, var(--color-amber) 16%, var(--color-surface));
-  border-color: var(--color-amber); color: var(--color-amber);
+  background: var(--color-amber);
+  border-color: var(--color-amber); color: #0E0C0A; font-weight: 600;
 }
 
 .input {

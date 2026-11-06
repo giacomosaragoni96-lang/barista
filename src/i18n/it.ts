@@ -36,6 +36,7 @@ export const it = {
     favoriteRemove: 'Togli dai preferiti',
     min: 'min',
     restart: 'Ricomincia',
+    toTaste: 'q.b.',
     tipTitle: 'Consiglio del bartender',
     replacing: (x: string) => `al posto di ${x}`,
     undo: 'Annulla',
@@ -165,9 +166,9 @@ export const it = {
   ice: { none: 'Senza ghiaccio', cubes: 'Cubetti', crushed: 'Tritato', 'big-cube': 'Cubo grande' } as Record<Ice, string>,
   difficulty: { 1: 'Facile', 2: 'Medio', 3: 'Difficile' } as Record<1 | 2 | 3, string>,
   family: {
-    sour: 'Sour', 'spirit-forward': 'Spirit forward', highball: 'Highball', spritz: 'Spritz', 'fizz-collins': 'Fizz e Collins',
-    'mule-buck': 'Mule e Buck', 'julep-smash': 'Julep e Smash', tiki: 'Tiki', punch: 'Punch', 'flip-cream': 'Flip e cremosi',
-    sparkling: 'Con bollicine', frozen: 'Frozen', hot: 'Caldi', coffee: 'Al caffè', shot: 'Shot', mocktail: 'Analcolici',
+    sour: 'Sour', 'spirit-forward': 'Forte', highball: 'Long drink', spritz: 'Spritz', 'fizz-collins': 'Fizz e Collins',
+    'mule-buck': 'Mule e Buck', 'julep-smash': 'Julep e Smash', tiki: 'Tiki', punch: 'Punch', 'flip-cream': 'Cremosi',
+    sparkling: 'Con bollicine', frozen: 'Ghiacciati', hot: 'Caldi', coffee: 'Al caffè', shot: 'Shot', mocktail: 'Analcolici',
   } as Record<Family, string>,
   base: {
     gin: 'Gin', vodka: 'Vodka', rum: 'Rum', tequila: 'Tequila', mezcal: 'Mezcal', bourbon: 'Bourbon', rye: 'Rye',
