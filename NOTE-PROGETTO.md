@@ -56,6 +56,7 @@ Regole dati: `src/data/types.ts` e il contratto comune (non cambiarlo senza coor
 | T8 | Correzioni | fatto (14:25, tutti i 7 difetti corretti) |
 | T9 | Pubblicazione finale | fatto (14:28, commit 8847774, controllo finale VA BENE) |
 | T10 | Upgrade ricetta: passi con icona del gesto, grassetto, progresso, barra in alto, tipografia | fatto (6 nov, parser src/lib/steps.ts, icone GestureIcon.tsx, 79 test verdi, controllo finale VA BENE) |
+| T11 | Allineamento al ricettario SIB (IBA 2021), inglese perfetto, inglese lingua principale | fatto (6 nov sera: 3 drink nuovi, 213 drink, 190 test, controllo finale VA BENE) |
 
 ## Come riprendere
 1. Leggi questo file e `CLAUDE.md`.
@@ -86,8 +87,10 @@ Regole dati: `src/data/types.ts` e il contratto comune (non cambiarlo senza coor
 - 6 nov: T10 upgrade grafico dei passi (icone gesto, grassetto automatico, Passo n di N, barra sticky). Limiti: nei passi lunghi con molti ingredienti il grassetto resta sul verbo; plurali italiani degli ingredienti non presi; home/ricerca/dispensa cambiate solo nella tipografia globale.
 
 
+- 6 nov sera: T11. Ricette IBA allineate al ricettario SIB (il PDF e materiale protetto: non e nel repository; i test lo leggono solo se si imposta la variabile SIB_TXT). Aggiunti Barracuda, Illegal, VE.N.TO; Zombie riscritto. Daiquiri con lime (il PDF dice limone, scelta consapevole). Tutto l'inglese riscritto (americano); inglese lingua principale: lingua dal browser (it solo se il browser e italiano), unita en=oz e it=ml, prezzi $ per en e euro per it, percorsi #/pantry #/favorites #/can-make #/settings (i vecchi italiani restano come alias). Nomi descrittivi tradotti con il vecchio nome negli alias, id invariati.
+
 ## Cosa resta aperto (prossimi passi, in ordine)
-1. Drink omessi per prudenza (ricetta non certa): Illegal, VE.N.TO, Angelo Azzurro, Cuba Pantera. Zombie: dosi da verificare sulla scheda IBA.
+1. Drink ancora fuori: Angelo Azzurro e Cuba Pantera (non sono nel ricettario SIB). Rose ha il tag contemporary ma non e nel PDF: dosi originali. Dubbi di contenuto da un barman: Trinidad Sour (la SIB dice stir), Mai Tai (rhum Martinique reso con rhum agricole), Zombie (Demerara reso con overproof).
 2. Supabase + login (email, poi Google): implementare src/lib/storage/supabaseRepo.ts con la stessa interfaccia UserDataRepo e scegliere il repo in storage/index.ts. Limite piano gratuito: 2 progetti attivi (l'utente deve metterne in pausa uno o passare a Pro).
 3. Pagamenti reali (Stripe) al posto del paywall finto; prezzi in src/config/pricing.ts.
 4. Piccolezze: Paywall.tsx ricava '14' dal testo i18n (usare pricing.trialDays); versione '1.0.0' fissa in SettingsScreen.tsx (leggere da package.json).

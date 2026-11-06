@@ -1,23 +1,27 @@
-import type { Base, Family, Glass, Ice, IngredientCategory, Taste, Technique, Unit } from '../data/types'
+import type { Base, Family, Glass, Ice, IngredientCategory, Lang, Taste, Technique, Unit } from '../data/types'
 import type { Gesture } from '../lib/steps'
 
 export const it = {
   appName: 'Barista',
+  meta: {
+    title: 'Barista - ricette di cocktail per il bancone',
+    description: "Trova qualsiasi cocktail in pochi secondi: dosi, bicchiere, tecnica e preparazione passo passo. Ti manca un ingrediente? Ti proponiamo sostituti e drink simili.",
+  },
   nav: { search: 'Cerca', favorites: 'Preferiti', pantry: 'Dispensa', settings: 'Impostazioni' },
   search: {
-    placeholder: 'Cerca un drink o un ingrediente…',
+    placeholder: 'Drink o ingrediente…',
     popular: 'I più richiesti',
     recents: 'Visti di recente',
     results: 'Risultati',
     empty: 'Nessun drink trovato',
-    emptyHint: 'Prova con il nome di un ingrediente, ad esempio "gin" o "aperol".',
+    emptyHint: 'Prova con un ingrediente, ad esempio "gin" o "Aperol".',
     clear: 'Cancella ricerca',
     aperitivi: 'Aperitivi',
-    alias: 'Alias',
+    alias: 'Detto anche',
     count: (n: number) => (n === 1 ? '1 risultato' : `${n} risultati`),
     favorites: 'Preferiti',
     all: 'Tutti',
-    viaIngredient: 'Contiene',
+    viaIngredient: 'Con',
   },
   drink: {
     ingredients: 'Ingredienti',
@@ -46,9 +50,9 @@ export const it = {
     scale: 'Dosi',
     stepsHint: 'Tocca un passo per segnarlo come fatto',
     markedMissing: 'Manca',
-    multiplier: 'Moltiplica le dosi',
-    less: 'Meno',
-    more: 'Più',
+    multiplier: 'Scala la ricetta',
+    less: 'Riduci le dosi',
+    more: 'Aumenta le dosi',
     eyebrowIngredients: 'Cosa serve',
     eyebrowGarnish: 'Per finire',
     eyebrowSteps: 'Cosa fare',
@@ -126,8 +130,9 @@ export const it = {
     startTrial: 'Prova Pro gratis',
     subscribeSoon: 'Abbonati — presto disponibile',
     resetConfirm: 'Cancellare preferiti, dispensa e impostazioni da questo dispositivo?',
-    responsibly: 'Bevi responsabilmente. Vietato ai minori di 18 anni.',
+    responsibly: "Bevi responsabilmente. Solo per chi ha l'età legale per bere.",
     plan: 'Piano',
+    languages: { en: 'English', it: 'Italiano' } as Record<Lang, string>,
   },
   units: { ml: 'ml', cl: 'cl', oz: 'oz' } as Record<'ml' | 'cl' | 'oz', string>,
   pro: {
@@ -142,7 +147,7 @@ export const it = {
       canMake: { title: 'Cosa posso fare stasera', desc: 'I drink pronti, con un sostituto o con un solo ingrediente in meno.' },
       scale: { title: 'Dosi per caraffe e batch', desc: 'Moltiplica le dosi fino a dieci volte.' },
     },
-    trial: 'Prova gratis 14 giorni',
+    trial: (days: number) => `Prova gratis ${days} giorni`,
     trialActive: (d: number) => (d === 1 ? 'Prova attiva: ancora 1 giorno' : `Prova attiva: ancora ${d} giorni`),
     trialEnded: 'Prova terminata',
     monthly: 'Mensile',
@@ -174,7 +179,7 @@ export const it = {
   } as Record<Gesture, string>,
   technique: {
     shake: 'Shake', 'dry-shake': 'Dry shake', stir: 'Stir', build: 'Build', blend: 'Blend',
-    muddle: 'Pestare', layer: 'Layer', throw: 'Throw', swizzle: 'Swizzle',
+    muddle: 'Muddle', layer: 'Layer', throw: 'Throw', swizzle: 'Swizzle',
   } as Record<Technique, string>,
   glass: {
     coupe: 'Coppa', martini: 'Martini', 'nick-nora': 'Nick & Nora', rocks: 'Rocks', 'double-rocks': 'Double rocks',
@@ -185,9 +190,9 @@ export const it = {
   ice: { none: 'Senza ghiaccio', cubes: 'Cubetti', crushed: 'Tritato', 'big-cube': 'Cubo grande' } as Record<Ice, string>,
   difficulty: { 1: 'Facile', 2: 'Medio', 3: 'Difficile' } as Record<1 | 2 | 3, string>,
   family: {
-    sour: 'Sour', 'spirit-forward': 'Forte', highball: 'Long drink', spritz: 'Spritz', 'fizz-collins': 'Fizz e Collins',
+    sour: 'Sour', 'spirit-forward': 'Spirit forward', highball: 'Long drink', spritz: 'Spritz', 'fizz-collins': 'Fizz e Collins',
     'mule-buck': 'Mule e Buck', 'julep-smash': 'Julep e Smash', tiki: 'Tiki', punch: 'Punch', 'flip-cream': 'Cremosi',
-    sparkling: 'Con bollicine', frozen: 'Ghiacciati', hot: 'Caldi', coffee: 'Al caffè', shot: 'Shot', mocktail: 'Analcolici',
+    sparkling: 'Con bollicine', frozen: 'Frozen', hot: 'Caldi', coffee: 'Al caffè', shot: 'Shot', mocktail: 'Analcolici',
   } as Record<Family, string>,
   base: {
     gin: 'Gin', vodka: 'Vodka', rum: 'Rum', tequila: 'Tequila', mezcal: 'Mezcal', bourbon: 'Bourbon', rye: 'Rye',
@@ -201,7 +206,7 @@ export const it = {
   category: {
     spirit: 'Distillati', liqueur: 'Liquori', vermouth: 'Vermouth', bitter: 'Bitter', amaro: 'Amari', wine: 'Vini',
     sparkling: 'Bollicine', beer: 'Birre', juice: 'Succhi', syrup: 'Sciroppi', soda: 'Soda e toniche', dairy: 'Latticini e uova',
-    fresh: 'Frutta e erbe', spice: 'Spezie', garnish: 'Guarnizioni', other: 'Altro',
+    fresh: 'Frutta ed erbe', spice: 'Spezie', garnish: 'Guarnizioni', other: 'Altro',
   } as Record<IngredientCategory, string>,
   unit: {
     ml: 'ml', dash: 'dash', drop: 'gocce', barspoon: 'barspoon', tsp: 'cucchiaino', g: 'g', piece: 'pz',

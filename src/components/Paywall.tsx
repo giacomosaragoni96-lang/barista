@@ -1,5 +1,5 @@
 import { useLang, useT } from '../i18n'
-import { pricing } from '../config/pricing'
+import { currencyForLang, formatPrice, prices, pricing } from '../config/pricing'
 import { planStatus } from '../lib/plan'
 import { usePlan } from '../state/store'
 import { Button } from './Button'
@@ -18,7 +18,7 @@ export function Paywall({ onDone }: { onDone?: () => void }) {
   const t = useT()
   const lang = useLang()
   const { plan, startTrial } = usePlan()
-  const money = (n: number) => new Intl.NumberFormat(lang, { style: 'currency', currency: pricing.currency, minimumFractionDigits: n % 1 ? 2 : 0 }).format(n)
+  const price = prices[currencyForLang(lang)]
   const expired = planStatus(plan) === 'trial-expired'
   return (
     <div className="px-5 pb-6 pt-4">
@@ -39,19 +39,19 @@ export function Paywall({ onDone }: { onDone?: () => void }) {
       <div className="mt-6 grid grid-cols-2 gap-3">
         <div className="card p-3">
           <div className="text-[14px] text-muted">{t.pro.monthly}</div>
-          <div className="font-display text-[24px]" style={{ fontVariantNumeric: 'tabular-nums' }}>{money(pricing.monthly)}</div>
+          <div className="font-display text-[24px]" style={{ fontVariantNumeric: 'tabular-nums' }}>{formatPrice(price.monthly, lang)}</div>
           <div className="text-[13.5px] text-muted">{t.pro.perMonth} · {t.pro.perVenue}</div>
         </div>
         <div className="card p-3" style={{ borderColor: 'var(--color-amber)' }}>
           <div className="text-[14px] text-amber">{t.pro.yearly} · {t.pro.bestValue}</div>
-          <div className="font-display text-[24px]" style={{ fontVariantNumeric: 'tabular-nums' }}>{money(pricing.yearly)}</div>
+          <div className="font-display text-[24px]" style={{ fontVariantNumeric: 'tabular-nums' }}>{formatPrice(price.yearly, lang)}</div>
           <div className="text-[13.5px] text-muted">{t.pro.perYear} · {t.pro.perVenue}</div>
         </div>
       </div>
       <div className="mt-5 flex flex-col gap-3">
         {expired && <p className="m-0 text-center text-miss">{t.pro.trialEnded}</p>}
         <Button variant="primary" size="lg" block onClick={() => { startTrial(); onDone?.() }}>
-          {t.pro.trial.replace('14', String(pricing.trialDays))}
+          {t.pro.trial(pricing.trialDays)}
         </Button>
         <Button size="lg" block disabled>{t.pro.subscribeSoon}</Button>
         <p className="m-0 text-center text-[13.5px] text-muted">{t.pro.placeholderNote}</p>

@@ -40,7 +40,7 @@ export const ingredients: Ingredient[] = [
   ], B),
   mk('white-rum', 'Rum bianco', 'White rum', 'spirit', [
     ['gold-rum', O, 'Un po\' più rotondo e tostato.', 'A bit rounder and toastier.'],
-    ['rhum-agricole', G, 'Più erbaceo e secco: ottimo nei sour.', 'More grassy and dry: great in sours.'],
+    ['rhum-agricole', O, 'Più erbaceo e secco: ottimo nei sour.', 'More grassy and dry: great in sours.'],
     ['cachaca', O, 'Più vegetale e funky.', 'More vegetal and funky.'],
   ], B),
   mk('gold-rum', 'Rum ambrato', 'Gold rum', 'spirit', [
@@ -56,7 +56,7 @@ export const ingredients: Ingredient[] = [
     ['gold-rum', O, 'Meno spezie e vaniglia.', 'Fewer spices and less vanilla.'],
   ]),
   mk('overproof-rum', 'Rum overproof', 'Overproof rum', 'spirit', [
-    ['jamaican-rum', G, 'Meno alcolico: usa 15 ml invece di 10.', 'Less alcohol: use 15 ml instead of 10.'],
+    ['jamaican-rum', G, 'Meno forte: usa 15 ml invece di 10.', 'Lower proof: use 15 ml instead of 10.'],
     ['dark-rum', O, 'Meno forza: dosa un po\' di più.', 'Less punch: pour a little more.'],
   ]),
   mk('jamaican-rum', 'Rum giamaicano', 'Jamaican rum', 'spirit', [
@@ -82,11 +82,11 @@ export const ingredients: Ingredient[] = [
   ], B),
   mk('tequila-blanco', 'Tequila blanco', 'Tequila blanco', 'spirit', [
     ['tequila', G, 'Qualsiasi tequila 100% agave.', 'Any 100% agave tequila.'],
-    ['tequila-reposado', G, 'Più morbida, note di legno.', 'Smoother, with some oak.'],
+    ['tequila-reposado', O, 'Più morbida, note di legno.', 'Smoother, with some oak.'],
     ['mezcal', O, 'Più affumicato.', 'Smokier.'],
   ]),
   mk('tequila-reposado', 'Tequila reposado', 'Tequila reposado', 'spirit', [
-    ['tequila-blanco', G, 'Più vivace, meno legno.', 'Livelier, less oak.'],
+    ['tequila-blanco', O, 'Più vivace, meno legno.', 'Livelier, less oak.'],
     ['tequila', G, 'Stesso uso.', 'Same use.'],
   ]),
   mk('mezcal', 'Mezcal', 'Mezcal', 'spirit', [
@@ -107,12 +107,12 @@ export const ingredients: Ingredient[] = [
     ['irish-whiskey', O, 'Più morbido, senza torba.', 'Softer, no peat.'],
     ['bourbon', E, 'Più dolce, senza malto.', 'Sweeter, no malt.'],
   ], B),
-  mk('blended-scotch', 'Scotch blended', 'Blended Scotch', 'spirit', [
+  mk('blended-scotch', 'Scotch blended', 'Blended Scotch whisky', 'spirit', [
     ['scotch', G, 'Stesso uso.', 'Same use.'],
     ['irish-whiskey', O, 'Più morbido.', 'Softer.'],
   ]),
-  mk('islay-scotch', 'Scotch torbato (Islay)', 'Islay Scotch', 'spirit', [
-    ['scotch', O, 'Meno fumo: il drink è meno marcato.', 'Less smoke: the drink is less pronounced.'],
+  mk('islay-scotch', 'Scotch torbato (Islay)', 'Islay Scotch (peated)', 'spirit', [
+    ['scotch', E, 'Perde il fumo: il drink cambia molto.', 'Loses the smoke: the drink changes a lot.'],
     ['mezcal', O, 'Fumo diverso, più vegetale.', 'Different, more vegetal smoke.'],
   ]),
   mk('irish-whiskey', 'Whiskey irlandese', 'Irish whiskey', 'spirit', [
@@ -172,12 +172,12 @@ export const ingredients: Ingredient[] = [
     ['cointreau', G, 'Più secco e intenso.', 'Drier and more intense.'],
   ]),
   mk('blue-curacao', 'Blue curaçao', 'Blue curaçao', 'liqueur', [
-    ['triple-sec', O, 'Stesso gusto ma senza colore blu.', 'Same flavour, but no blue colour.'],
-    ['orange-curacao', O, 'Stesso gusto, colore arancio.', 'Same flavour, orange colour.'],
+    ['triple-sec', O, 'Stesso gusto ma senza colore blu.', 'Same flavor, but no blue color.'],
+    ['orange-curacao', O, 'Stesso gusto, colore arancio.', 'Same flavor, orange color.'],
   ]),
   mk('maraschino-liqueur', 'Liquore di maraschino', 'Maraschino liqueur', 'liqueur', [
-    ['cherry-brandy', O, 'Più dolce e meno secco: dosa un po\' meno.', 'Sweeter and less dry: use slightly less.'],
-    ['amaretto', E, 'Mandorla al posto della ciliegia amara.', 'Almond instead of bitter cherry.'],
+    ['cherry-brandy', E, 'Più dolce e scuro, senza la nota secca di marasca: dosa un po\' meno.', 'Sweeter and darker, without the dry marasca note: use slightly less.'],
+    ['amaretto', E, 'Mandorla al posto della ciliegia marasca.', 'Almond instead of marasca cherry.'],
   ]),
   mk('green-chartreuse', 'Chartreuse verde', 'Green Chartreuse', 'liqueur', [
     ['yellow-chartreuse', O, 'Più dolce e meno potente.', 'Sweeter and less potent.'],
@@ -190,28 +190,28 @@ export const ingredients: Ingredient[] = [
   ]),
   mk('elderflower-liqueur', 'Liquore al sambuco (St-Germain)', 'Elderflower liqueur (St-Germain)', 'liqueur', [
     ['st-germain', G, 'Marchio standard di bancone.', 'The standard bar brand.'],
-    ['elderflower-syrup', O, 'Niente alcol: usa 15 ml invece di 20 e meno zucchero.', 'No alcohol: use 15 ml instead of 20 and less sugar.'],
+    ['elderflower-syrup', O, 'Niente alcol: usa 15 ml invece di 20 e riduci lo zucchero nel resto.', 'No alcohol: use 15 ml instead of 20 and cut the sugar elsewhere.'],
     ['limoncello', E, 'Limone al posto del fiore di sambuco.', 'Lemon instead of elderflower.'],
   ]),
   mk('st-germain', 'St-Germain', 'St-Germain', 'liqueur', [
     ['elderflower-liqueur', G, 'Qualsiasi liquore al sambuco.', 'Any elderflower liqueur.'],
-    ['elderflower-syrup', O, 'Niente alcol: usa 15 ml invece di 20 e meno zucchero.', 'No alcohol: use 15 ml instead of 20 and less sugar.'],
+    ['elderflower-syrup', O, 'Niente alcol: usa 15 ml invece di 20 e riduci lo zucchero nel resto.', 'No alcohol: use 15 ml instead of 20 and cut the sugar elsewhere.'],
   ]),
   mk('coffee-liqueur', 'Liquore al caffè', 'Coffee liqueur', 'liqueur', [
     ['kahlua', G, 'Marchio standard di bancone.', 'The standard bar brand.'],
-    ['espresso', E, 'Senza dolcezza: aggiungi 10 ml di sciroppo semplice.', 'Not sweet: add 10 ml simple syrup.'],
+    ['espresso', E, 'Senza dolcezza: aggiungi 10 ml di sciroppo semplice.', 'Unsweetened: add 10 ml simple syrup.'],
   ]),
   mk('kahlua', 'Kahlúa', 'Kahlúa', 'liqueur', [
     ['coffee-liqueur', G, 'Qualsiasi liquore al caffè.', 'Any coffee liqueur.'],
-    ['espresso', E, 'Senza dolcezza: aggiungi 10 ml di sciroppo semplice.', 'Not sweet: add 10 ml simple syrup.'],
+    ['espresso', E, 'Senza dolcezza: aggiungi 10 ml di sciroppo semplice.', 'Unsweetened: add 10 ml simple syrup.'],
   ]),
   mk('irish-cream', 'Crema irlandese', 'Irish cream', 'liqueur', [
     ['baileys', G, 'Marchio standard di bancone.', 'The standard bar brand.'],
-    ['coffee-liqueur', E, 'Perde la cremosità: aggiungi 10 ml di panna.', 'Loses creaminess: add 10 ml cream.'],
+    ['coffee-liqueur', E, 'Perde la cremosità: aggiungi 10 ml di panna fresca.', 'Loses creaminess: add 10 ml heavy cream.'],
   ]),
   mk('baileys', 'Baileys', 'Baileys', 'liqueur', [
     ['irish-cream', G, 'Qualsiasi crema irlandese.', 'Any Irish cream.'],
-    ['coffee-liqueur', E, 'Perde la cremosità: aggiungi 10 ml di panna.', 'Loses creaminess: add 10 ml cream.'],
+    ['coffee-liqueur', E, 'Perde la cremosità: aggiungi 10 ml di panna fresca.', 'Loses creaminess: add 10 ml heavy cream.'],
   ]),
   mk('galliano', 'Galliano', 'Galliano', 'liqueur', [
     ['benedictine', E, 'Erbaceo e al miele, senza vaniglia e anice.', 'Herbal and honeyed, no vanilla or anise.'],
@@ -226,11 +226,11 @@ export const ingredients: Ingredient[] = [
     ['triple-sec', E, 'Arancia al posto del limone.', 'Orange instead of lemon.'],
   ]),
   mk('midori', 'Midori', 'Midori', 'liqueur', [
-    ['blue-curacao', E, 'Colore diverso e gusto d\'arancia, non melone.', 'Different colour and orange taste, not melon.'],
-    ['triple-sec', E, 'Niente melone: il drink cambia gusto.', 'No melon: the drink changes flavour.'],
+    ['blue-curacao', E, 'Colore diverso e gusto d\'arancia, non melone.', 'Different color and orange taste, not melon.'],
+    ['triple-sec', E, 'Niente melone: il drink cambia gusto.', 'No melon: the drink changes flavor.'],
   ]),
   mk('jagermeister', 'Jägermeister', 'Jägermeister', 'liqueur', [
-    ['amaro-montenegro', O, 'Più delicato e floreale.', 'Gentler and floral.'],
+    ['amaro-montenegro', E, 'Più delicato e floreale: il carattere cambia.', 'Gentler and floral: the character changes.'],
     ['fernet-branca', E, 'Molto più amaro: dosa metà.', 'Much more bitter: use half.'],
   ]),
   mk('sambuca', 'Sambuca', 'Sambuca', 'liqueur', [
@@ -239,7 +239,7 @@ export const ingredients: Ingredient[] = [
   ]),
   mk('coconut-rum', 'Rum al cocco', 'Coconut rum', 'liqueur', [
     ['malibu', G, 'Marchio standard di bancone.', 'The standard bar brand.'],
-    ['white-rum', E, 'Aggiungi 15 ml di crema di cocco per ricreare il gusto.', 'Add 15 ml coconut cream to recreate the flavour.'],
+    ['white-rum', E, 'Aggiungi 15 ml di crema di cocco per ricreare il gusto.', 'Add 15 ml coconut cream to recreate the flavor.'],
   ]),
   mk('malibu', 'Malibu', 'Malibu', 'liqueur', [
     ['coconut-rum', G, 'Qualsiasi rum al cocco.', 'Any coconut rum.'],
@@ -251,7 +251,7 @@ export const ingredients: Ingredient[] = [
   ]),
   mk('drambuie', 'Drambuie', 'Drambuie', 'liqueur', [
     ['benedictine', O, 'Più erbaceo, meno whisky.', 'More herbal, less whisky.'],
-    ['honey-syrup', E, '10 ml di miele; aggiungi 5 ml di scotch per il carattere.', '10 ml honey; add 5 ml scotch for character.'],
+    ['honey-syrup', E, '10 ml di sciroppo di miele; aggiungi 5 ml di scotch per il carattere.', '10 ml honey syrup; add 5 ml Scotch for character.'],
   ]),
   mk('benedictine', 'Bénédictine', 'Bénédictine', 'liqueur', [
     ['yellow-chartreuse', O, 'Più erbacea e meno dolce.', 'More herbal and less sweet.'],
@@ -271,11 +271,11 @@ export const ingredients: Ingredient[] = [
     ['chambord', G, 'Lampone, più dolce.', 'Raspberry, sweeter.'],
   ]),
   mk('creme-de-cacao-white', 'Crème de cacao bianca', 'White crème de cacao', 'liqueur', [
-    ['creme-de-cacao-dark', G, 'Stesso gusto, ma il drink si scurisce.', 'Same flavour, but the drink darkens.'],
-    ['coffee-liqueur', E, 'Caffè al posto del cacao; colore scuro.', 'Coffee instead of cocoa; darker colour.'],
+    ['creme-de-cacao-dark', G, 'Stesso gusto, ma il drink si scurisce.', 'Same flavor, but the drink darkens.'],
+    ['coffee-liqueur', E, 'Caffè al posto del cacao; colore scuro.', 'Coffee instead of cocoa; darker color.'],
   ]),
   mk('creme-de-cacao-dark', 'Crème de cacao scura', 'Dark crème de cacao', 'liqueur', [
-    ['creme-de-cacao-white', G, 'Stesso gusto, drink più chiaro.', 'Same flavour, lighter drink.'],
+    ['creme-de-cacao-white', G, 'Stesso gusto, drink più chiaro.', 'Same flavor, lighter drink.'],
     ['coffee-liqueur', E, 'Caffè al posto del cacao.', 'Coffee instead of cocoa.'],
   ]),
   mk('creme-de-menthe-green', 'Crème de menthe verde', 'Green crème de menthe', 'liqueur', [
@@ -288,24 +288,24 @@ export const ingredients: Ingredient[] = [
     ['peach-schnapps', O, 'Pesca al posto dell\'albicocca.', 'Peach instead of apricot.'],
     ['cherry-brandy', E, 'Ciliegia al posto dell\'albicocca.', 'Cherry instead of apricot.'],
   ]),
-  mk('cherry-brandy', 'Liquore di ciliegia', 'Cherry brandy', 'liqueur', [
+  mk('cherry-brandy', 'Liquore di ciliegia', 'Cherry brandy (cherry liqueur)', 'liqueur', [
     ['cherry-heering', G, 'Marchio standard di bancone.', 'The standard bar brand.'],
-    ['maraschino-liqueur', O, 'Più secco, mandorla amara.', 'Drier, bitter almond.'],
+    ['maraschino-liqueur', E, 'Molto più secco e incolore, con mandorla amara.', 'Much drier and clear, with bitter almond.'],
     ['chambord', E, 'Frutti rossi al posto della ciliegia.', 'Red berries instead of cherry.'],
   ]),
   mk('cherry-heering', 'Cherry Heering', 'Cherry Heering', 'liqueur', [
     ['cherry-brandy', G, 'Qualsiasi liquore di ciliegia scuro.', 'Any dark cherry liqueur.'],
-    ['maraschino-liqueur', O, 'Più secco.', 'Drier.'],
+    ['maraschino-liqueur', E, 'Molto più secco e incolore.', 'Much drier and clear.'],
   ]),
   mk('peach-schnapps', 'Peach schnapps', 'Peach schnapps', 'liqueur', [
     ['apricot-brandy', O, 'Albicocca al posto della pesca.', 'Apricot instead of peach.'],
-    ['peach-puree', O, 'Senza alcol: 30 ml e un po\' di zucchero.', 'Alcohol-free: 30 ml with a little sugar.'],
+    ['peach-puree', O, 'Senza alcol: 30 ml e un po\' di sciroppo semplice.', 'Alcohol-free: 30 ml with a little simple syrup.'],
   ]),
 
   // ---------- AMARI E APERITIVI ----------
   mk('aperol', 'Aperol', 'Aperol', 'amaro', [
     ['select', G, 'Più amaro e meno dolce: stessa dose.', 'More bitter and less sweet: same amount.'],
-    ['campari', E, 'Molto più amaro: usa metà dose e allunga con soda.', 'Much more bitter: use half the amount and top with soda.'],
+    ['campari', E, 'Molto più amaro: usa metà dose e allunga con soda.', 'Much more bitter: use half the amount and top with soda water.'],
   ], B),
   mk('campari', 'Campari', 'Campari', 'amaro', [
     ['select', G, 'Un po\' più dolce e meno intenso.', 'Slightly sweeter and less intense.'],
@@ -346,7 +346,7 @@ export const ingredients: Ingredient[] = [
     ['port', E, 'Più denso e fruttato: dosa 3/4.', 'Denser and fruitier: use 3/4.'],
   ], B),
   mk('dry-vermouth', 'Vermouth dry', 'Dry vermouth', 'vermouth', [
-    ['bianco-vermouth', O, 'Più dolce: riduci lo zucchero nel drink.', 'Sweeter: cut sugar in the drink.'],
+    ['bianco-vermouth', E, 'Molto più dolce: riduci lo zucchero nel drink.', 'Much sweeter: cut the sugar in the drink.'],
     ['lillet-blanc', O, 'Più morbido e fruttato.', 'Softer and fruitier.'],
     ['white-wine', E, 'Meno erbe: aggiungi una goccia di assenzio se vuoi.', 'Fewer herbs: add a drop of absinthe if you like.'],
   ], B),
@@ -365,7 +365,7 @@ export const ingredients: Ingredient[] = [
   ]),
   mk('sherry-fino', 'Sherry fino', 'Fino sherry', 'wine', [
     ['dry-vermouth', O, 'Meno salino e nocciolato.', 'Less saline and nutty.'],
-    ['white-wine', E, 'Più fruttato, meno ossidato.', 'Fruitier, less oxidised.'],
+    ['white-wine', E, 'Più fruttato, meno ossidato.', 'Fruitier, less oxidized.'],
   ]),
   mk('port', 'Porto', 'Port', 'wine', [
     ['sweet-vermouth', O, 'Meno corpo e frutta; dosa uguale.', 'Less body and fruit; same amount.'],
@@ -384,7 +384,7 @@ export const ingredients: Ingredient[] = [
   mk('prosecco', 'Prosecco', 'Prosecco', 'sparkling', [
     ['sparkling-wine', G, 'Qualsiasi spumante secco.', 'Any dry sparkling wine.'],
     ['champagne', G, 'Più secco e fine.', 'Drier and finer.'],
-    ['soda-water', E, 'Niente alcol né sapore: aggiungi 10 ml di sciroppo semplice.', 'No alcohol or flavour: add 10 ml simple syrup.'],
+    ['soda-water', E, 'Niente alcol né sapore: aggiungi 10 ml di sciroppo semplice.', 'No alcohol or flavor: add 10 ml simple syrup.'],
   ], B),
   mk('champagne', 'Champagne', 'Champagne', 'sparkling', [
     ['sparkling-wine', G, 'Più semplice, stesso uso.', 'Simpler, same use.'],
@@ -394,7 +394,7 @@ export const ingredients: Ingredient[] = [
     ['prosecco', G, 'Stesso uso.', 'Same use.'],
     ['champagne', G, 'Più fine e secco.', 'Finer and drier.'],
   ]),
-  mk('lager-beer', 'Birra chiara', 'Lager beer', 'beer', [
+  mk('lager-beer', 'Birra chiara', 'Lager', 'beer', [
     ['stout', E, 'Molto più scura e tostata.', 'Much darker and roasted.'],
   ]),
   mk('stout', 'Birra scura (stout)', 'Stout', 'beer', [
@@ -409,7 +409,7 @@ export const ingredients: Ingredient[] = [
   ], B),
   mk('orange-bitters', 'Bitter all\'arancia', 'Orange bitters', 'bitter', [
     ['angostura', O, 'Meno agrumi, più spezie.', 'Less citrus, more spice.'],
-    ['triple-sec', E, 'Aggiungi 5 ml e un twist d\'arancia.', 'Add 5 ml plus an orange twist.'],
+    ['triple-sec', E, 'Usa 5 ml e un twist d\'arancia.', 'Use 5 ml plus an orange twist.'],
   ]),
   mk('peychauds', 'Peychaud\'s bitters', 'Peychaud\'s bitters', 'bitter', [
     ['angostura', O, 'Meno anice, più spezie.', 'Less anise, more spice.'],
@@ -417,15 +417,15 @@ export const ingredients: Ingredient[] = [
   ]),
 
   // ---------- SUCCHI ----------
-  mk('lime-juice', 'Succo di lime', 'Lime juice', 'juice', [
-    ['lemon-juice', O, 'Meno amaro e aromatico: usa un po\' meno sciroppo.', 'Less bitter and aromatic: use slightly less syrup.'],
-    ['lime-cordial', E, 'Più dolce: riduci lo sciroppo.', 'Sweeter: cut the syrup.'],
+  mk('lime-juice', 'Succo di lime fresco', 'Fresh lime juice', 'juice', [
+    ['lemon-juice', O, 'Meno amaro e meno aromatico: usa un po\' meno sciroppo semplice.', 'Less bitter and less aromatic: use slightly less simple syrup.'],
+    ['lime-cordial', E, 'Più dolce: riduci lo sciroppo semplice.', 'Sweeter: cut the simple syrup.'],
   ], B),
-  mk('lemon-juice', 'Succo di limone', 'Lemon juice', 'juice', [
+  mk('lemon-juice', 'Succo di limone fresco', 'Fresh lemon juice', 'juice', [
     ['lime-juice', O, 'Più aspro e aromatico.', 'Tarter and more aromatic.'],
   ], B),
   mk('orange-juice', 'Succo d\'arancia', 'Orange juice', 'juice', [
-    ['grapefruit-juice', E, 'Più acido e amaro; aggiungi 5 ml di sciroppo.', 'Tarter and bitter; add 5 ml syrup.'],
+    ['grapefruit-juice', E, 'Più acido e amaro; aggiungi 5 ml di sciroppo semplice.', 'Tarter and more bitter; add 5 ml simple syrup.'],
     ['pineapple-juice', E, 'Più tropicale e dolce.', 'More tropical and sweet.'],
   ], B),
   mk('grapefruit-juice', 'Succo di pompelmo', 'Grapefruit juice', 'juice', [
@@ -457,7 +457,7 @@ export const ingredients: Ingredient[] = [
     ['soda-water', E, 'Meno dolce e senza cocco.', 'Less sweet and no coconut.'],
   ]),
   mk('passion-fruit-puree', 'Purea di frutto della passione', 'Passion fruit purée', 'juice', [
-    ['passion-fruit-syrup', G, 'Più dolce: riduci lo zucchero e aggiungi 5 ml di lime.', 'Sweeter: cut sugar and add 5 ml lime.'],
+    ['passion-fruit-syrup', G, 'Più dolce: riduci lo zucchero e aggiungi 5 ml di succo di lime.', 'Sweeter: cut the sugar and add 5 ml lime juice.'],
     ['pineapple-juice', E, 'Meno acido e profumato.', 'Less tart and aromatic.'],
   ]),
   mk('strawberry-puree', 'Purea di fragola', 'Strawberry purée', 'juice', [
@@ -482,12 +482,12 @@ export const ingredients: Ingredient[] = [
 
   // ---------- SCIROPPI ----------
   mk('simple-syrup', 'Sciroppo semplice', 'Simple syrup', 'syrup', [
-    ['sugar', O, '1 cucchiaino = 10 ml; mescola bene finché si scioglie.', '1 teaspoon = 10 ml; stir until dissolved.'],
+    ['sugar', O, '1 cucchiaino ogni 10 ml; mescola finché si scioglie.', '1 teaspoon per 10 ml; stir until fully dissolved.'],
     ['agave-syrup', G, 'Più dolce: usa 3/4 della dose.', 'Sweeter: use 3/4 of the amount.'],
     ['honey-syrup', O, 'Più aromatico: stessa dose.', 'More aromatic: same amount.'],
   ], B),
   mk('demerara-syrup', 'Sciroppo demerara', 'Demerara syrup', 'syrup', [
-    ['simple-syrup', G, 'Meno ricco e caramellato.', 'Less rich and caramelly.'],
+    ['simple-syrup', O, 'Meno ricco e caramellato.', 'Less rich and caramelly.'],
     ['brown-sugar', O, '1 cucchiaino = 10 ml, sciolto bene.', '1 teaspoon = 10 ml, well dissolved.'],
   ]),
   mk('orgeat', 'Orzata (orgeat)', 'Orgeat', 'syrup', [
@@ -496,7 +496,7 @@ export const ingredients: Ingredient[] = [
   ]),
   mk('grenadine', 'Granatina', 'Grenadine', 'syrup', [
     ['pomegranate-juice', O, 'Meno dolce: aggiungi 5 ml di sciroppo semplice.', 'Less sweet: add 5 ml simple syrup.'],
-    ['raspberry-syrup', O, 'Sapore di lampone.', 'Raspberry flavour.'],
+    ['raspberry-syrup', O, 'Sapore di lampone.', 'Raspberry flavor.'],
     ['creme-de-cassis', E, 'Ribes nero, più alcolico.', 'Blackcurrant, boozier.'],
   ], B),
   mk('falernum', 'Falernum', 'Falernum', 'syrup', [
@@ -514,7 +514,7 @@ export const ingredients: Ingredient[] = [
   ]),
   mk('raspberry-syrup', 'Sciroppo di lampone', 'Raspberry syrup', 'syrup', [
     ['grenadine', O, 'Più dolce e meno fruttato.', 'Sweeter, less fruity.'],
-    ['chambord', G, 'Alcolico, più intenso.', 'Alcoholic, more intense.'],
+    ['chambord', O, 'Alcolico e più intenso: dosa un po\' meno.', 'Boozy and more intense: use a little less.'],
   ]),
   mk('vanilla-syrup', 'Sciroppo di vaniglia', 'Vanilla syrup', 'syrup', [
     ['simple-syrup', E, 'Perde la vaniglia: aggiungi 1 goccia di estratto.', 'Loses vanilla: add a drop of extract.'],
@@ -533,26 +533,26 @@ export const ingredients: Ingredient[] = [
     ['simple-syrup', E, 'Perde il fiore.', 'Loses the floral note.'],
   ]),
   mk('passion-fruit-syrup', 'Sciroppo di frutto della passione', 'Passion fruit syrup', 'syrup', [
-    ['passion-fruit-puree', G, 'Più acida: aggiungi 5 ml di sciroppo.', 'Tarter: add 5 ml syrup.'],
+    ['passion-fruit-puree', G, 'Più acida: aggiungi 5 ml di sciroppo semplice.', 'Tarter: add 5 ml simple syrup.'],
     ['simple-syrup', E, 'Perde l\'aroma.', 'Loses the aroma.'],
   ]),
   mk('blue-curacao-syrup', 'Sciroppo blue curaçao (analcolico)', 'Blue curaçao syrup (non-alcoholic)', 'syrup', [
     ['blue-curacao', O, 'Alcolico: stessa dose.', 'Alcoholic: same amount.'],
-    ['orange-juice', E, 'Perde il colore blu.', 'Loses the blue colour.'],
+    ['orange-juice', E, 'Perde il colore blu.', 'Loses the blue color.'],
   ]),
   mk('lime-cordial', 'Lime cordial', 'Lime cordial', 'syrup', [
     ['lime-juice', O, 'Aggiungi 15 ml di sciroppo semplice.', 'Add 15 ml simple syrup.'],
     ['lemon-juice', E, 'Aggiungi 15 ml di sciroppo semplice.', 'Add 15 ml simple syrup.'],
   ]),
   mk('sour-mix', 'Sour mix', 'Sour mix', 'syrup', [
-    ['lemon-juice', G, '2 parti di limone e 1 di sciroppo.', '2 parts lemon to 1 part syrup.'],
+    ['lemon-juice', G, 'Mescola 2 parti di succo di limone e 1 di sciroppo semplice.', 'Mix 2 parts lemon juice to 1 part simple syrup.'],
     ['lime-juice', O, 'Più aromatico.', 'More aromatic.'],
   ]),
 
   // ---------- SODA E BOLLICINE ANALCOLICHE ----------
   mk('tonic-water', 'Acqua tonica', 'Tonic water', 'soda', [
     ['bitter-lemon', O, 'Più dolce e agrumata.', 'Sweeter and more citrusy.'],
-    ['soda-water', E, 'Niente amaro: aggiungi 10 ml di limone.', 'No bitterness: add 10 ml lemon.'],
+    ['soda-water', E, 'Niente amaro: aggiungi 10 ml di succo di limone.', 'No bitterness: add 10 ml lemon juice.'],
   ], B),
   mk('soda-water', 'Acqua gassata (soda)', 'Soda water', 'soda', [
     ['sparkling-water', G, 'Stessa funzione, meno bollicine.', 'Same function, fewer bubbles.'],
@@ -563,7 +563,7 @@ export const ingredients: Ingredient[] = [
   ]),
   mk('ginger-beer', 'Ginger beer', 'Ginger beer', 'soda', [
     ['ginger-ale', O, 'Più dolce e meno piccante; aggiungi 5 ml di lime.', 'Sweeter, less spicy; add 5 ml lime.'],
-    ['ginger-syrup', O, '15 ml di sciroppo + soda.', '15 ml syrup + soda.'],
+    ['ginger-syrup', O, '15 ml di sciroppo di zenzero + soda.', '15 ml ginger syrup + soda water.'],
   ], B),
   mk('ginger-ale', 'Ginger ale', 'Ginger ale', 'soda', [
     ['ginger-beer', O, 'Più piccante e intenso.', 'Spicier and stronger.'],
@@ -576,18 +576,18 @@ export const ingredients: Ingredient[] = [
   ]),
   mk('lemon-soda', 'Limonata gassata', 'Lemon soda', 'soda', [
     ['lemon-lime-soda', G, 'Un po\' più dolce.', 'Slightly sweeter.'],
-    ['soda-water', E, 'Aggiungi 15 ml di limone e 10 ml di sciroppo.', 'Add 15 ml lemon and 10 ml syrup.'],
+    ['soda-water', E, 'Aggiungi 15 ml di succo di limone e 10 ml di sciroppo semplice.', 'Add 15 ml lemon juice and 10 ml simple syrup.'],
   ], B),
   mk('lemon-lime-soda', 'Gassosa lemon-lime (Sprite)', 'Lemon-lime soda (Sprite)', 'soda', [
     ['lemon-soda', G, 'Più limone.', 'More lemon.'],
-    ['soda-water', E, 'Aggiungi 10 ml di sciroppo e limone.', 'Add 10 ml syrup and lemon.'],
+    ['soda-water', E, 'Aggiungi 10 ml di sciroppo semplice e una spremuta di limone.', 'Add 10 ml simple syrup and a squeeze of lemon.'],
   ]),
   mk('bitter-lemon', 'Bitter lemon', 'Bitter lemon', 'soda', [
-    ['tonic-water', O, 'Meno limone: aggiungi 10 ml di limone.', 'Less lemon: add 10 ml lemon.'],
+    ['tonic-water', O, 'Meno limone: aggiungi 10 ml di succo di limone.', 'Less lemon: add 10 ml lemon juice.'],
     ['lemon-soda', E, 'Meno amara.', 'Less bitter.'],
   ]),
   mk('energy-drink', 'Energy drink', 'Energy drink', 'soda', [
-    ['lemon-lime-soda', E, 'Senza caffeina né gusto tipico.', 'No caffeine or the typical flavour.'],
+    ['lemon-lime-soda', E, 'Senza caffeina né gusto tipico.', 'No caffeine or the typical flavor.'],
   ]),
 
   // ---------- LATTICINI E UOVA ----------
@@ -607,7 +607,7 @@ export const ingredients: Ingredient[] = [
     ['cream', O, 'Senza cocco: aggiungi 10 ml di sciroppo.', 'No coconut: add 10 ml syrup.'],
   ]),
   mk('coconut-milk', 'Latte di cocco', 'Coconut milk', 'dairy', [
-    ['coconut-cream', G, 'Più denso: dimezza la dose.', 'Thicker: use less.'],
+    ['coconut-cream', G, 'Più denso: dimezza la dose.', 'Thicker: use half.'],
     ['milk', E, 'Senza cocco.', 'No coconut.'],
   ]),
   mk('whipped-cream', 'Panna montata', 'Whipped cream', 'dairy', [
@@ -620,7 +620,7 @@ export const ingredients: Ingredient[] = [
     ['lemon-juice', E, 'Aggiungi ghiaccio frullato e 10 ml di sciroppo.', 'Add blended ice and 10 ml syrup.'],
   ]),
   mk('egg-white', 'Albume', 'Egg white', 'dairy', [
-    ['aquafaba', G, 'Vegano: 30 ml per albume; shake a secco.', 'Vegan: 30 ml per egg white; dry shake.'],
+    ['aquafaba', G, 'Vegano: 30 ml per albume; shakera a secco.', 'Vegan: 30 ml per egg white; dry shake.'],
   ], B),
   mk('egg-yolk', 'Tuorlo', 'Egg yolk', 'dairy', [
     ['cream', E, 'Meno ricco: 20 ml per tuorlo.', 'Less rich: 20 ml per yolk.'],
@@ -630,7 +630,7 @@ export const ingredients: Ingredient[] = [
     ['egg-white', E, 'Meno corpo.', 'Less body.'],
   ]),
   mk('aquafaba', 'Aquafaba', 'Aquafaba', 'dairy', [
-    ['egg-white', G, 'Non vegano: 1 albume per 30 ml.', 'Not vegan: 1 egg white per 30 ml.'],
+    ['egg-white', G, 'Non vegano: 1 albume al posto di 30 ml.', 'Not vegan: 1 egg white replaces 30 ml.'],
   ]),
 
   // ---------- FRESCHI ----------
@@ -658,7 +658,7 @@ export const ingredients: Ingredient[] = [
     ['celery', E, 'Più erbaceo e salato.', 'More herbal and salty.'],
   ]),
   mk('espresso', 'Espresso', 'Espresso', 'fresh', [
-    ['cold-brew', G, 'Meno intenso: usa 1,5 volte la dose.', 'Less intense: use 1.5 times the amount.'],
+    ['cold-brew', O, 'Meno intenso: usa 1,5 volte la dose.', 'Less intense: use 1.5 times the amount.'],
     ['hot-coffee', O, 'Più leggero; raffredda prima.', 'Lighter; cool it first.'],
     ['coffee-liqueur', E, 'Più dolce: riduci lo zucchero.', 'Sweeter: cut the sugar.'],
   ], B),
@@ -730,7 +730,7 @@ export const ingredients: Ingredient[] = [
     ['tabasco', E, 'Perde l\'umami: aggiungi una goccia di salsa di soia.', 'Loses umami: add a drop of soy sauce.'],
   ], B),
   mk('honey', 'Miele', 'Honey', 'spice', [
-    ['honey-syrup', G, 'Più fluido: stessa dose.', 'More fluid: same amount.'],
+    ['honey-syrup', G, 'Più liquido: stessa dose.', 'Thinner: same amount.'],
     ['agave-syrup', G, 'Più neutro.', 'More neutral.'],
   ]),
   mk('cocoa-powder', 'Cacao in polvere', 'Cocoa powder', 'spice', [
@@ -766,7 +766,7 @@ export const ingredients: Ingredient[] = [
   ]),
   mk('maraschino-cherry', 'Ciliegia al maraschino', 'Maraschino cherry', 'garnish', [
     ['cocktail-cherry', G, 'Più scura e meno dolce.', 'Darker and less sweet.'],
-    ['orange-peel', E, 'Perde il colore rosso.', 'Loses the red colour.'],
+    ['orange-peel', E, 'Perde il colore rosso.', 'Loses the red color.'],
   ]),
   mk('cocktail-cherry', 'Ciliegia Luxardo', 'Luxardo cherry', 'garnish', [
     ['maraschino-cherry', G, 'Più dolce.', 'Sweeter.'],
@@ -831,11 +831,11 @@ export const ingredients: Ingredient[] = [
   mk('water', 'Acqua', 'Water', 'other', [], { basic: true, assumed: true }),
   mk('crodino', 'Crodino', 'Crodino', 'other', [
     ['sanbitter', G, 'Stesso uso, più amaro e rosso.', 'Same use, bitterer and red.'],
-    ['orange-juice', E, '60 ml di succo d\'arancia più 1 goccia di bitter.', '60 ml orange juice plus a dash of bitters.'],
+    ['orange-juice', E, '60 ml di succo d\'arancia più 1 goccia di bitter.', '60 ml orange juice plus 1 drop of bitters.'],
   ]),
   mk('sanbitter', 'Sanbittèr', 'Sanbittèr', 'other', [
     ['crodino', G, 'Più dolce e arancione.', 'Sweeter and orange.'],
-    ['cranberry-juice', E, 'Colore simile, più acido.', 'Similar colour, tarter.'],
+    ['cranberry-juice', E, 'Colore simile, più acido.', 'Similar color, tarter.'],
   ]),
   mk('non-alcoholic-spirit', 'Distillato analcolico', 'Non-alcoholic spirit', 'other', [
     ['tonic-water', E, 'Meno aromatico.', 'Less aromatic.'],

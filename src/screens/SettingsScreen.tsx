@@ -11,6 +11,7 @@ import { usePlan, useSettings } from '../state/store'
 import type { Lang } from '../data/types'
 
 const APP_VERSION = '1.0.0'
+const LANGS: Lang[] = ['en', 'it']
 
 function Row({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
   return (
@@ -32,7 +33,7 @@ export default function SettingsScreen() {
   const status = planStatus(plan)
   const planText =
     status === 'pro' ? t.settings.planPro
-    : status === 'trial' ? t.settings.trialUntil(new Date(plan.until ?? '').toLocaleDateString(lang, { day: 'numeric', month: 'long', year: 'numeric' }))
+    : status === 'trial' ? t.settings.trialUntil(new Date(plan.until ?? '').toLocaleDateString(lang === 'en' ? 'en-US' : 'it-IT', { day: 'numeric', month: 'long', year: 'numeric' }))
     : status === 'trial-expired' ? t.pro.trialEnded
     : t.settings.planFree
 
@@ -42,7 +43,7 @@ export default function SettingsScreen() {
 
       <Row label={t.settings.language}>
         <Segmented<Lang> label={t.settings.language} value={settings.lang} onChange={settings.setLang}
-          options={[{ value: 'it', label: 'Italiano' }, { value: 'en', label: 'English' }]} />
+          options={LANGS.map((l) => ({ value: l, label: t.settings.languages[l] }))} />
       </Row>
 
       <Row label={t.settings.units} hint={t.settings.unitsHint}>

@@ -14,8 +14,8 @@ export default defineConfig({
       manifest: {
         name: 'Barista',
         short_name: 'Barista',
-        description: 'Ricette drink per baristi al lavoro: dosi, bicchiere, tecnica e sostituti.',
-        lang: 'it',
+        description: 'Drink recipes for bartenders at work: measures, glass, technique and substitutes.',
+        lang: 'en',
         start_url: '/barista/',
         scope: '/barista/',
         display: 'standalone',

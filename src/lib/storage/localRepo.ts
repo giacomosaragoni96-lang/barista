@@ -1,5 +1,5 @@
 import type { Plan } from '../plan'
-import { MAX_RECENTS, type Settings, type UserDataRepo } from './repo'
+import { MAX_RECENTS, normalizeSettings, type UserDataRepo } from './repo'
 
 const K = {
   pantry: 'barista:v1:pantry',
@@ -49,12 +49,7 @@ export const localRepo: UserDataRepo = {
     write(K.recents, ids.slice(0, MAX_RECENTS))
   },
   async getSettings() {
-    const v = read(K.settings) as Partial<Settings> | undefined
-    if (!v || typeof v !== 'object') return null
-    const lang = v.lang === 'it' || v.lang === 'en' ? v.lang : null
-    const units = v.units === 'ml' || v.units === 'cl' || v.units === 'oz' ? v.units : null
-    if (!lang && !units) return null
-    return { lang: lang ?? 'it', units: units ?? 'ml' }
+    return normalizeSettings(read(K.settings))
   },
   async setSettings(s) {
     write(K.settings, s)

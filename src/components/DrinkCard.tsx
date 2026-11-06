@@ -25,8 +25,8 @@ export function DrinkCard({ drink, extra }: Props) {
       >
         <span className="flex w-[52px] shrink-0 justify-center"><GlassIcon glass={drink.glass} color={drink.color} size={44} /></span>
         <span className="min-w-0 flex-1">
-          <span className="font-display block truncate text-[21px] leading-tight">{drink.name}</span>
-          <span className="mt-0.5 block truncate text-[14.5px] text-muted">
+          <span className="font-display block line-clamp-2 break-words text-[21px] leading-tight">{drink.name}</span>
+          <span className="mt-0.5 block text-[14.5px] text-muted">
             {t.family[drink.family]} · {t.technique[drink.technique[0]]} · {drink.abv}%
           </span>
           {extra && <span className="mt-0.5 block text-[14.5px]">{extra}</span>}

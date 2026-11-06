@@ -2,17 +2,32 @@ import { useSyncExternalStore } from 'react'
 import type { Lang } from '../data/types'
 import { it, type Dict } from './it'
 import { en } from './en'
+import { initialLang } from '../lib/storage/repo'
 
 const dicts: Record<Lang, Dict> = { it, en }
 
-let current: Lang = typeof navigator !== 'undefined' && navigator.language?.toLowerCase().startsWith('en') ? 'en' : 'it'
+/** Stessa regola dello store (initialLang): it solo se il browser e italiano, altrimenti en. */
+let current: Lang = initialLang()
 const listeners = new Set<() => void>()
 
-/** Cambia la lingua dell'interfaccia (in T6 collegata a useSettings). */
+/** Allinea <html lang>, titolo e meta description alla lingua. */
+function applyDocument(lang: Lang) {
+  if (typeof document === 'undefined') return
+  const { title, description } = dicts[lang].meta
+  document.documentElement.lang = lang
+  document.title = title
+  for (const sel of ['meta[name="description"]', 'meta[property="og:description"]']) {
+    document.head.querySelector(sel)?.setAttribute('content', description)
+  }
+  document.head.querySelector('meta[property="og:title"]')?.setAttribute('content', title)
+}
+applyDocument(current)
+
+/** Cambia la lingua dell'interfaccia (App la collega a useSettings). */
 export function setLang(lang: Lang) {
   if (lang === current) return
   current = lang
-  if (typeof document !== 'undefined') document.documentElement.lang = lang
+  applyDocument(lang)
   listeners.forEach((l) => l())
 }
 

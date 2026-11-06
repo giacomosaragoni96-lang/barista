@@ -1,7 +1,7 @@
 import { useMemo, useSyncExternalStore } from 'react'
 import type { Lang } from '../data/types'
 import { repo, type Settings } from '../lib/storage'
-import { MAX_RECENTS } from '../lib/storage/repo'
+import { MAX_RECENTS, defaultSettings, withLang, withUnits } from '../lib/storage/repo'
 import { isPro, startTrial as makeTrial, type Plan } from '../lib/plan'
 
 interface State {
@@ -13,15 +13,12 @@ interface State {
   plan: Plan
 }
 
-const initialLang = (): Lang =>
-  typeof navigator !== 'undefined' && navigator.language?.toLowerCase().startsWith('it') ? 'it' : 'en'
-
 let state: State = {
   hydrated: false,
   pantry: new Set(),
   favorites: [],
   recents: [],
-  settings: { lang: initialLang(), units: 'ml' },
+  settings: defaultSettings(),
   plan: { status: 'free' },
 }
 
@@ -109,14 +106,13 @@ const recentActions = {
   },
 }
 
-const saveSettings = (patch: Partial<Settings>) => {
-  const s = { ...state.settings, ...patch }
+const saveSettings = (s: Settings) => {
   set({ settings: s })
   void repo.setSettings(s)
 }
 const settingsActions = {
-  setLang: (lang: Lang) => saveSettings({ lang }),
-  setUnits: (units: Settings['units']) => saveSettings({ units }),
+  setLang: (lang: Lang) => saveSettings(withLang(state.settings, lang)),
+  setUnits: (units: Settings['units']) => saveSettings(withUnits(state.settings, units)),
 }
 
 const planActions = {

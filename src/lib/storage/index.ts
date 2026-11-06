@@ -3,4 +3,5 @@ import type { UserDataRepo } from './repo'
 
 /** Domani: supabaseRepo al posto di localRepo. */
 export const repo: UserDataRepo = localRepo
-export type { UserDataRepo, Settings } from './repo'
+export type { UserDataRepo, Settings, Units } from './repo'
+export { initialLang, defaultUnits, defaultSettings } from './repo'
