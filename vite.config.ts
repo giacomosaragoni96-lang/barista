@@ -1,0 +1,37 @@
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+import { VitePWA } from 'vite-plugin-pwa'
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  base: '/barista/',
+  plugins: [
+    react(),
+    tailwindcss(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      includeAssets: ['favicon.svg'],
+      manifest: {
+        name: 'Barista',
+        short_name: 'Barista',
+        description: 'Ricette drink per baristi al lavoro: dosi, bicchiere, tecnica e sostituti.',
+        lang: 'it',
+        start_url: '/barista/',
+        scope: '/barista/',
+        display: 'standalone',
+        background_color: '#0E0C0A',
+        theme_color: '#0E0C0A',
+        icons: [
+          { src: 'pwa-64x64.png', sizes: '64x64', type: 'image/png' },
+          { src: 'pwa-192x192.png', sizes: '192x192', type: 'image/png' },
+          { src: 'pwa-512x512.png', sizes: '512x512', type: 'image/png' },
+          { src: 'maskable-icon-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+        ],
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
+        navigateFallback: '/barista/index.html',
+      },
+    }),
+  ],
+})
