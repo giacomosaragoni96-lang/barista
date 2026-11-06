@@ -6,6 +6,7 @@ import { EmptyState } from '../components/EmptyState'
 import { Icon } from '../components/Icon'
 import { Paywall } from '../components/Paywall'
 import { SearchBar } from '../components/SearchBar'
+import { tap } from '../hooks/haptic'
 import { useLang, useT } from '../i18n'
 import { ingredientsByCategory } from '../lib/catalog'
 import { BASIC_KIT } from '../lib/pantry'
@@ -103,7 +104,7 @@ export default function PantryScreen() {
                             type="button"
                             role="checkbox"
                             aria-checked={on}
-                            onClick={() => toggle(i.id)}
+                            onClick={() => { tap(); toggle(i.id) }}
                             className="flex min-h-[56px] w-full items-center gap-3 border-0 bg-transparent px-4 text-left text-cream active:bg-surface-2"
                           >
                             <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border-2 transition-colors duration-150 ${on ? 'border-have bg-have text-[#0E1A0F]' : 'border-line'}`}>

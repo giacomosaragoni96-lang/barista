@@ -88,7 +88,7 @@ export default function DrinkScreen() {
   }
 
   return (
-    <div className="pb-10">
+    <div className="page-in pb-10">
       <TopBar
         right={
           <button
@@ -103,9 +103,9 @@ export default function DrinkScreen() {
         }
       />
 
-      <header className="px-5 text-center">
-        <div className="mx-auto flex justify-center"
-          style={{ filter: `drop-shadow(0 0 28px color-mix(in srgb, ${drink.color} 35%, transparent))` }}>
+      <header className="-mt-12 px-5 pt-12 text-center"
+        style={{ background: `radial-gradient(ellipse 70% 60% at 50% 30%, color-mix(in srgb, ${drink.color} 22%, transparent), transparent 75%)` }}>
+        <div className="mx-auto mt-2 flex justify-center">
           <GlassIcon glass={drink.glass} color={drink.color} size={128} />
         </div>
         <h1 className="font-display mb-0 mt-3 text-[34px] leading-[1.08]">{drink.name}</h1>
@@ -120,7 +120,7 @@ export default function DrinkScreen() {
         </div>
       </header>
 
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-3 px-4">
+      <div className="mt-7 flex items-center justify-between gap-3 px-4">
         <UnitToggle value={settings.units} onChange={settings.setUnits} />
         <ScaleStepper value={scale} onChange={setScale} locked={!isPro} onLockedTap={() => setPaywall(true)} />
       </div>
@@ -188,7 +188,7 @@ export default function DrinkScreen() {
 function TopBar({ right }: { right?: React.ReactNode }) {
   const t = useT()
   return (
-    <div className="flex items-center justify-between px-2 pt-3">
+    <div className="relative z-10 flex items-center justify-between px-2 pt-3">
       <button type="button" aria-label={t.state.back} onClick={() => back(paths.search)}
         className="flex h-12 w-12 items-center justify-center rounded-full border-0 bg-transparent text-cream">
         <Icon name="chevron-left" size={26} />

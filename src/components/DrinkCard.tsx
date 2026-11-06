@@ -17,7 +17,7 @@ export function DrinkCard({ drink, extra }: Props) {
   const fav = useFavorites()
   const isFav = fav.isFav(drink.id)
   return (
-    <div className="card relative flex items-center transition-colors duration-150 active:bg-surface-2">
+    <div className="card press relative flex items-center">
       <a
         href={'#' + paths.drink(drink.id)}
         onClick={(e) => { e.preventDefault(); navigate(paths.drink(drink.id)) }}

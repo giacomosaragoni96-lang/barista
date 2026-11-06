@@ -12,6 +12,8 @@ export const it = {
     emptyHint: 'Prova con il nome di un ingrediente, ad esempio "gin" o "aperol".',
     clear: 'Cancella ricerca',
     aperitivi: 'Aperitivi',
+    alias: 'Alias',
+    count: (n: number) => (n === 1 ? '1 risultato' : `${n} risultati`),
     favorites: 'Preferiti',
     all: 'Tutti',
     viaIngredient: 'Contiene',

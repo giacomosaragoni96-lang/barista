@@ -3,6 +3,7 @@ import type { Drink } from '../data/types'
 import { l10n, useLang, useT } from '../i18n'
 import { getSimilarDrinks, getSubstitutes } from '../lib/alternatives'
 import { ingName } from '../lib/catalog'
+import { tap } from '../hooks/haptic'
 import { navigate, paths } from '../router'
 import { usePantry, usePlan } from '../state/store'
 import { Button } from './Button'
@@ -59,7 +60,7 @@ export function MissingSheet({ open, onClose, ingredientId, drink, missing, onUs
                       {s.inPantry && <span className="text-[13px] text-have">{t.missing.inPantry}</span>}
                     </div>
                     <p className="mb-3 mt-1 text-[15.5px] text-muted">{l10n(s.note, lang)}</p>
-                    <Button variant="primary" block onClick={() => { onUse(s.ingredient.id); onClose() }}>{t.missing.useThis}</Button>
+                    <Button variant="primary" block onClick={() => { tap(); onUse(s.ingredient.id); onClose() }}>{t.missing.useThis}</Button>
                   </li>
                 ))}
               </ul>

@@ -1,16 +1,19 @@
 import { useState } from 'react'
+import { tap } from '../hooks/haptic'
 import { useT } from '../i18n'
 import { Icon } from './Icon'
 
 export function StepList({ steps }: { steps: string[] }) {
   const t = useT()
   const [done, setDone] = useState<Set<number>>(new Set())
-  const toggle = (i: number) =>
+  const toggle = (i: number) => {
+    tap()
     setDone((d) => {
       const n = new Set(d)
       if (!n.delete(i)) n.add(i)
       return n
     })
+  }
   return (
     <div>
       <ol className="m-0 flex list-none flex-col gap-2 p-0">

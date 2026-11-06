@@ -12,6 +12,8 @@ export const en: Dict = {
     emptyHint: 'Try an ingredient name, like "gin" or "aperol".',
     clear: 'Clear search',
     aperitivi: 'Aperitifs',
+    alias: 'Alias',
+    count: (n: number) => (n === 1 ? '1 result' : `${n} results`),
     favorites: 'Favorites',
     all: 'All',
     viaIngredient: 'Contains',

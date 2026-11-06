@@ -35,10 +35,14 @@ export default function App() {
   }
 
   return (
-    <div className="flex h-dvh justify-center bg-[#070605]">
+    <div className="relative flex h-dvh justify-center" style={{ background: 'radial-gradient(ellipse 80% 70% at 50% 40%, #1A1410 0%, #0A0807 60%, #060504 100%)' }}>
+      <div className="absolute left-8 top-7 hidden items-center gap-3 lg:flex" aria-hidden="true">
+        <img src={import.meta.env.BASE_URL + 'logo.svg'} alt="" width={40} height={40} />
+        <span className="font-display text-[26px]">{t.appName}</span>
+      </div>
       <div className="relative flex h-full w-full max-w-[480px] flex-col bg-bg md:border-x md:border-line">
         <main ref={scroller} className="scroll-area min-h-0 flex-1" style={{ paddingTop: 'var(--sat)' }}>
-          {screen}
+          <div key={route.name + (route.params.id ?? '')} className={route.name === 'drink' ? '' : 'page-in'}>{screen}</div>
         </main>
         <BottomNav />
       </div>

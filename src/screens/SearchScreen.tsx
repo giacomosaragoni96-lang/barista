@@ -75,18 +75,23 @@ export default function SearchScreen() {
       <div className="px-4 pb-8">
         {searching ? (
           results.length ? (
-            <ul className="m-0 mt-2 flex list-none flex-col gap-2.5 p-0" aria-label={t.search.results}>
+            <>
+            <p className="m-0 mb-3 mt-1 px-1 text-[15px] font-semibold text-muted" aria-live="polite">{t.search.count(results.length)}</p>
+            <ul className="m-0 flex list-none flex-col gap-2.5 p-0" aria-label={t.search.results}>
               {results.map((r) => (
                 <li key={r.drink.id}>
                   <DrinkCard
                     drink={r.drink}
                     extra={r.matched?.startsWith('ingredient:') ? (
                       <span className="text-amber">{t.search.viaIngredient} {ingName(r.matched.replace(/^ingredient:\s*/, ''), lang) || r.matched.replace(/^ingredient:\s*/, '')}</span>
+                    ) : r.matched?.startsWith('alias:') ? (
+                      <span className="text-amber">{t.search.alias}: {r.matched.replace(/^alias:\s*/, '')}</span>
                     ) : undefined}
                   />
                 </li>
               ))}
             </ul>
+            </>
           ) : (
             <EmptyState icon={<Icon name="search" size={28} />} title={t.search.empty} hint={t.search.emptyHint} />
           )
