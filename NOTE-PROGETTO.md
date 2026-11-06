@@ -49,12 +49,12 @@ Regole dati: `src/data/types.ts` e il contratto comune (non cambiarlo senza coor
 | T1 | Scheletro, schema dati, pipeline Pages, file di memoria | fatto |
 | T2 | Catalogo ingredienti (`ingredients.ts`) | fatto (13:25, 216 ingredienti) |
 | T3 | Logica + storage + store + validate | fatto (13:16) |
-| T4a-g | Archivio drink, 8 file (elenchi chiusi per file, vedi sotto) | in corso dalle 14:13 (prima partenza 13:25 interrotta da limite di utilizzo 13:30-14:10) |
+| T4a-g | Archivio drink, 8 file (elenchi chiusi per file, vedi sotto) | fatto (14:17, 210 drink) |
 | T5 | Design system + guscio app | fatto (13:18) |
-| T6 | Schermate | in corso (13:19) |
-| T7 | Verifica qualita | da fare |
-| T8 | Correzioni | da fare |
-| T9 | Pubblicazione finale | da fare |
+| T6 | Schermate | fatto (14:20) |
+| T7 | Verifica qualita | fatto (14:22, 18 test, 7 difetti trovati) |
+| T8 | Correzioni | fatto (14:25, tutti i 7 difetti corretti) |
+| T9 | Pubblicazione finale | fatto (14:28, commit 8847774, controllo finale VA BENE) |
 
 ## Come riprendere
 1. Leggi questo file e `CLAUDE.md`.
@@ -78,3 +78,12 @@ Regole dati: `src/data/types.ts` e il contratto comune (non cambiarlo senza coor
 
 ## Diario
 - 13:30-14:10 del 6 nov 2026: limite di utilizzo raggiunto, 8 agenti interrotti; ripresi alle 14:13. Checkpoint commit 027fa62.
+
+- 14:28: v1 completa online. 210 drink, 23 test verdi, build ok, controllo finale VA BENE.
+
+## Cosa resta aperto (prossimi passi, in ordine)
+1. Drink omessi per prudenza (ricetta non certa): Illegal, VE.N.TO, Angelo Azzurro, Cuba Pantera. Zombie: dosi da verificare sulla scheda IBA.
+2. Supabase + login (email, poi Google): implementare src/lib/storage/supabaseRepo.ts con la stessa interfaccia UserDataRepo e scegliere il repo in storage/index.ts. Limite piano gratuito: 2 progetti attivi (l'utente deve metterne in pausa uno o passare a Pro).
+3. Pagamenti reali (Stripe) al posto del paywall finto; prezzi in src/config/pricing.ts.
+4. Piccolezze: Paywall.tsx ricava '14' dal testo i18n (usare pricing.trialDays); versione '1.0.0' fissa in SettingsScreen.tsx (leggere da package.json).
+5. Idee: tema chiaro, foto drink, food cost per drink, condivisione ricetta, modalita' 'batch' per eventi.
