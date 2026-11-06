@@ -1,4 +1,129 @@
 @import "tailwindcss";
 
-:root { color-scheme: dark; }
-body { margin: 0; background: #0E0C0A; color: #F5EBDD; font-family: 'Inter Variable', system-ui, sans-serif; }
+@theme {
+  --color-bg: #0E0C0A;
+  --color-surface: #1A1613;
+  --color-surface-2: #26201B;
+  --color-line: #332B24;
+  --color-cream: #F5EBDD;
+  --color-muted: #A89C8C;
+  --color-amber: #E8A33D;
+  --color-amber-deep: #B97A1E;
+  --color-have: #6FBF73;
+  --color-miss: #E06C5B;
+  --color-gold: #F2C14E;
+
+  --font-display: 'Fraunces Variable', Georgia, serif;
+  --font-sans: 'Inter Variable', system-ui, -apple-system, sans-serif;
+
+  --radius-card: 18px;
+  --radius-sheet: 24px;
+  --radius-pill: 999px;
+}
+
+:root {
+  color-scheme: dark;
+  --nav-h: 64px;
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+}
+
+*, *::before, *::after { -webkit-tap-highlight-color: transparent; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  touch-action: manipulation;
+  overscroll-behavior: none;
+}
+
+button, a, input, select, summary { touch-action: manipulation; }
+button { font: inherit; color: inherit; cursor: pointer; }
+
+:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 2px;
+}
+
+::selection { background: color-mix(in srgb, var(--color-amber) 40%, transparent); }
+
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.dose {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--color-amber);
+}
+
+.scroll-area {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar { display: none; }
+
+/* Pulsanti */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 0 20px;
+  border-radius: 16px; border: 1px solid var(--color-line);
+  background: var(--color-surface-2); color: var(--color-cream);
+  font-weight: 600; font-size: 17px;
+  transition: background-color 160ms, border-color 160ms, transform 120ms;
+}
+.btn:active { transform: scale(0.98); }
+.btn-lg { min-height: 56px; padding: 0 24px; font-size: 18px; border-radius: 18px; }
+.btn-primary { background: var(--color-amber); border-color: var(--color-amber); color: #1A1005; }
+.btn-primary:active { background: var(--color-amber-deep); }
+.btn-ghost { background: transparent; }
+.btn-danger { background: transparent; border-color: color-mix(in srgb, var(--color-miss) 60%, transparent); color: var(--color-miss); }
+.btn:disabled { opacity: 0.45; pointer-events: none; }
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+}
+
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: 44px; padding: 0 16px;
+  border-radius: 999px; border: 1px solid var(--color-line);
+  background: var(--color-surface); color: var(--color-muted);
+  font-size: 16px; font-weight: 500; white-space: nowrap;
+  transition: background-color 160ms, border-color 160ms, color 160ms;
+}
+.chip[aria-pressed="true"] {
+  background: color-mix(in srgb, var(--color-amber) 16%, var(--color-surface));
+  border-color: var(--color-amber); color: var(--color-amber);
+}
+
+.input {
+  width: 100%; min-height: 52px; padding: 0 16px 0 48px;
+  background: var(--color-surface); color: var(--color-cream);
+  border: 1px solid var(--color-line); border-radius: 16px;
+  font: inherit; font-size: 17px;
+  transition: border-color 160ms, box-shadow 160ms;
+}
+.input::placeholder { color: var(--color-muted); }
+.input:focus { outline: none; border-color: var(--color-amber); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-amber) 25%, transparent); }
+
+@keyframes sheet-in { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

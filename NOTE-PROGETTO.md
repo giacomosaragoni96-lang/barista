@@ -48,10 +48,10 @@ Regole dati: `src/data/types.ts` e il contratto comune (non cambiarlo senza coor
 |---|---|---|
 | T1 | Scheletro, schema dati, pipeline Pages, file di memoria | fatto |
 | T2 | Catalogo ingredienti (`ingredients.ts`) | da fare |
-| T3 | Logica + storage + store + validate | da fare |
+| T3 | Logica + storage + store + validate | fatto (13:16) |
 | T4a-g | Archivio drink, 8 file (elenchi chiusi per file: li aggiunge il coordinatore) | da fare |
-| T5 | Design system + guscio app | da fare |
-| T6 | Schermate | da fare |
+| T5 | Design system + guscio app | fatto (13:18) |
+| T6 | Schermate | in corso (13:19) |
 | T7 | Verifica qualita | da fare |
 | T8 | Correzioni | da fare |
 | T9 | Pubblicazione finale | da fare |

@@ -1,0 +1,70 @@
+import { useState } from 'react'
+import { Button } from '../components/Button'
+import { ConfirmSheet } from '../components/ConfirmSheet'
+import { PaywallSheet } from '../components/Paywall'
+import { ProBadge } from '../components/ProBadge'
+import { Segmented, UnitToggle } from '../components/UnitToggle'
+import { useLang, useT } from '../i18n'
+import { planStatus } from '../lib/plan'
+import { repo } from '../lib/storage'
+import { usePlan, useSettings } from '../state/store'
+import type { Lang } from '../data/types'
+
+const APP_VERSION = '1.0.0'
+
+function Row({ label, hint, children }: { label: string; hint?: string; children: React.ReactNode }) {
+  return (
+    <div className="card p-4">
+      <div className="mb-3 text-[18px] font-semibold">{label}</div>
+      {hint && <div className="-mt-2 mb-3 text-[14.5px] text-muted">{hint}</div>}
+      {children}
+    </div>
+  )
+}
+
+export default function SettingsScreen() {
+  const t = useT()
+  const lang = useLang()
+  const settings = useSettings()
+  const { plan, isPro, startTrial } = usePlan()
+  const [confirm, setConfirm] = useState(false)
+  const [paywall, setPaywall] = useState(false)
+  const status = planStatus(plan)
+  const planText =
+    status === 'pro' ? t.settings.planPro
+    : status === 'trial' ? t.settings.trialUntil(new Date(plan.until ?? '').toLocaleDateString(lang, { day: 'numeric', month: 'long', year: 'numeric' }))
+    : status === 'trial-expired' ? t.pro.trialEnded
+    : t.settings.planFree
+
+  return (
+    <div className="flex flex-col gap-3 px-4 pb-8 pt-6">
+      <h1 className="font-display m-0 mb-1 px-1 text-[32px]">{t.settings.title}</h1>
+
+      <Row label={t.settings.language}>
+        <Segmented<Lang> label={t.settings.language} value={settings.lang} onChange={settings.setLang}
+          options={[{ value: 'it', label: 'Italiano' }, { value: 'en', label: 'English' }]} />
+      </Row>
+
+      <Row label={t.settings.units} hint={t.settings.unitsHint}>
+        <UnitToggle value={settings.units} onChange={settings.setUnits} />
+      </Row>
+
+      <Row label={t.settings.plan}>
+        <div className="mb-3 flex items-center gap-2 text-[17px]">{isPro && <ProBadge />}<span>{planText}</span></div>
+        {!isPro && <Button variant="primary" size="lg" block onClick={() => (status === 'free' ? startTrial() : setPaywall(true))}>{t.settings.startTrial}</Button>}
+        <Button size="lg" block disabled className="mt-3">{t.settings.subscribeSoon}</Button>
+      </Row>
+
+      <Button variant="danger" size="lg" block onClick={() => setConfirm(true)}>{t.settings.reset}</Button>
+
+      <div className="mt-4 px-1 text-center text-[14.5px] text-muted">
+        <p className="m-0">{t.settings.version} {APP_VERSION}</p>
+        <p className="mb-0 mt-1">{t.settings.responsibly}</p>
+      </div>
+
+      <ConfirmSheet open={confirm} message={t.settings.resetConfirm} confirmLabel={t.settings.reset} danger
+        onConfirm={() => { void repo.clearAll().then(() => location.reload()) }} onClose={() => setConfirm(false)} />
+      <PaywallSheet open={paywall} onClose={() => setPaywall(false)} />
+    </div>
+  )
+}
