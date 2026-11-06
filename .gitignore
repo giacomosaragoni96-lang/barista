@@ -4,3 +4,6 @@ dist
 *.local
 dev-dist
 .DS_Store
+
+# Documenti personali, non pubblicare
+docs/Barista-situazione-e-prossimi-passi.pdf
