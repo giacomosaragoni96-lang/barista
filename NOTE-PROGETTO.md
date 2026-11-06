@@ -58,6 +58,7 @@ Regole dati: `src/data/types.ts` e il contratto comune (non cambiarlo senza coor
 | T10 | Upgrade ricetta: passi con icona del gesto, grassetto, progresso, barra in alto, tipografia | fatto (6 nov, parser src/lib/steps.ts, icone GestureIcon.tsx, 79 test verdi, controllo finale VA BENE) |
 | T11 | Allineamento al ricettario SIB (IBA 2021), inglese perfetto, inglese lingua principale | fatto (6 nov sera: 3 drink nuovi, 213 drink, 190 test, controllo finale VA BENE) |
 | T12 | Barra di ricerca in "Cosa posso fare" (filtra i drink fattibili nelle tre schede, numeri aggiornati, messaggio se il risultato sta in un'altra scheda) | fatto (6 nov sera, 185 test verdi, provato dal vivo a 375px) |
+| T13 | App completamente gratuita: interruttore src/config/features.ts (PRO_ENABLED=false) sblocca tutto e nasconde Pro/prova/prezzi/paywall; codice Pro spento ma intatto | fatto (6 nov sera, 187 test verdi, qualita OK; i testi Pro restano nel bundle JS ma non vengono mostrati) |
 
 ## Come riprendere
 1. Leggi questo file e `CLAUDE.md`.

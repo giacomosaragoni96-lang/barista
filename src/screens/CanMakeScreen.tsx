@@ -4,6 +4,7 @@ import { DrinkCard } from '../components/DrinkCard'
 import { EmptyState } from '../components/EmptyState'
 import { Icon } from '../components/Icon'
 import { Paywall } from '../components/Paywall'
+import { PRO_ENABLED } from '../config/features'
 import { SearchBar } from '../components/SearchBar'
 import { useLang, useT } from '../i18n'
 import { ingName } from '../lib/catalog'
@@ -42,7 +43,7 @@ export default function CanMakeScreen() {
       <h1 className="font-display m-0 text-[30px]">{t.canMake.title}</h1>
     </div>
   )
-  if (!isPro) return <div>{header}<Paywall /></div>
+  if (PRO_ENABLED && !isPro) return <div>{header}<Paywall /></div>
 
   const tabs: { key: Tab; label: string; n: number }[] = [
     { key: 'ready', label: t.pantry.ready, n: res.ready.length },

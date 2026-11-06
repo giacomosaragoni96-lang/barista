@@ -1,3 +1,4 @@
+import { PRO_ENABLED } from '../config/features'
 import { useLang, useT } from '../i18n'
 import { currencyForLang, formatPrice, prices, pricing } from '../config/pricing'
 import { planStatus } from '../lib/plan'
@@ -20,6 +21,7 @@ export function Paywall({ onDone }: { onDone?: () => void }) {
   const { plan, startTrial } = usePlan()
   const price = prices[currencyForLang(lang)]
   const expired = planStatus(plan) === 'trial-expired'
+  if (!PRO_ENABLED) return null
   return (
     <div className="px-5 pb-6 pt-4">
       <div className="flex items-center gap-2"><ProBadge /><span className="text-[15px] text-muted">{t.pro.locked}</span></div>
@@ -61,6 +63,7 @@ export function Paywall({ onDone }: { onDone?: () => void }) {
 }
 
 export function PaywallSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
+  if (!PRO_ENABLED) return null
   return (
     <Sheet open={open} onClose={onClose}>
       <div className="-mx-5 -mb-5"><Paywall onDone={onClose} /></div>

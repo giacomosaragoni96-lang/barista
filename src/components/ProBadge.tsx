@@ -1,6 +1,8 @@
+import { PRO_ENABLED } from '../config/features'
 import { useT } from '../i18n'
 
 export function ProBadge({ className = '' }: { className?: string }) {
+  if (!PRO_ENABLED) return null
   const t = useT()
   return (
     <span

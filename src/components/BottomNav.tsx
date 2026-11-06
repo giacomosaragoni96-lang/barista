@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { useT } from '../i18n'
 import { navigate, paths, useRoute, type RouteName } from '../router'
 import { ProBadge } from './ProBadge'
+import { PRO_ENABLED } from '../config/features'
 
 type Tab = { key: 'search' | 'favorites' | 'pantry' | 'settings'; path: string; match: RouteName[]; icon: ReactNode; pro?: boolean }
 
@@ -41,7 +42,7 @@ export function BottomNav() {
                 <span className={`absolute top-0 h-[3px] w-8 rounded-b-full bg-amber transition-opacity duration-150 ${active ? 'opacity-100' : 'opacity-0'}`} />
                 <span className="relative">
                   {tab.icon}
-                  {tab.pro && <ProBadge className="absolute -right-7 -top-1.5 scale-[0.8]" />}
+                  {PRO_ENABLED && tab.pro && <ProBadge className="absolute -right-7 -top-1.5 scale-[0.8]" />}
                 </span>
                 <span className="text-[12.5px] font-semibold">{t.nav[tab.key]}</span>
               </a>

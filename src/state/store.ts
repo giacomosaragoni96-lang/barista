@@ -2,6 +2,7 @@ import { useMemo, useSyncExternalStore } from 'react'
 import type { Lang } from '../data/types'
 import { repo, type Settings } from '../lib/storage'
 import { MAX_RECENTS, defaultSettings, withLang, withUnits } from '../lib/storage/repo'
+import { PRO_ENABLED } from '../config/features'
 import { isPro, startTrial as makeTrial, type Plan } from '../lib/plan'
 
 interface State {
@@ -117,6 +118,7 @@ const settingsActions = {
 
 const planActions = {
   startTrial() {
+    if (!PRO_ENABLED) return // app gratuita: nessuna prova da attivare
     const p = makeTrial()
     set({ plan: p })
     void repo.setPlan(p)
@@ -149,7 +151,7 @@ export function useSettings() {
 
 export function usePlan() {
   const { plan } = useStore()
-  return useMemo(() => ({ plan, isPro: isPro(plan), ...planActions }), [plan])
+  return useMemo(() => ({ plan, isPro: isPro(plan), proEnabled: PRO_ENABLED, ...planActions }), [plan])
 }
 
 export function useHydrated(): boolean {

@@ -5,6 +5,7 @@ import { ConfirmSheet } from '../components/ConfirmSheet'
 import { EmptyState } from '../components/EmptyState'
 import { Icon } from '../components/Icon'
 import { Paywall } from '../components/Paywall'
+import { PRO_ENABLED } from '../config/features'
 import { SearchBar } from '../components/SearchBar'
 import { tap } from '../hooks/haptic'
 import { useLang, useT } from '../i18n'
@@ -37,7 +38,7 @@ export default function PantryScreen() {
     }).filter((g) => g.list.length)
   }, [q, lang])
 
-  if (!isPro) {
+  if (PRO_ENABLED && !isPro) {
     return (
       <div>
         <h1 className="font-display m-0 px-5 pt-6 text-[32px]">{t.pantry.title}</h1>

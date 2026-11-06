@@ -1,4 +1,5 @@
 import { pricing } from '../config/pricing'
+import { PRO_ENABLED } from '../config/features'
 
 export interface Plan {
   status: 'free' | 'trial' | 'pro'
@@ -12,7 +13,9 @@ export type ProFeature = (typeof PRO_FEATURES)[number]
 
 export type PlanStatus = 'free' | 'trial' | 'trial-expired' | 'pro'
 
+/** Con PRO_ENABLED=false l'app e' gratuita: qualunque piano salvato conta come 'pro' (sbloccato). */
 export function planStatus(plan: Plan, now: Date = new Date()): PlanStatus {
+  if (!PRO_ENABLED) return 'pro'
   if (plan.status === 'pro') return 'pro'
   if (plan.status === 'trial') {
     const end = plan.until ? Date.parse(plan.until) : NaN

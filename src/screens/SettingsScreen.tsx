@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Button } from '../components/Button'
 import { ConfirmSheet } from '../components/ConfirmSheet'
 import { PaywallSheet } from '../components/Paywall'
+import { PRO_ENABLED } from '../config/features'
 import { ProBadge } from '../components/ProBadge'
 import { Segmented, UnitToggle } from '../components/UnitToggle'
 import { useLang, useT } from '../i18n'
@@ -50,11 +51,11 @@ export default function SettingsScreen() {
         <UnitToggle value={settings.units} onChange={settings.setUnits} />
       </Row>
 
-      <Row label={t.settings.plan}>
+      {PRO_ENABLED && <Row label={t.settings.plan}>
         <div className="mb-3 flex items-center gap-2 text-[17px]">{isPro && <ProBadge />}<span>{planText}</span></div>
         {!isPro && <Button variant="primary" size="lg" block onClick={() => (status === 'free' ? startTrial() : setPaywall(true))}>{t.settings.startTrial}</Button>}
         <Button size="lg" block disabled className="mt-3">{t.settings.subscribeSoon}</Button>
-      </Row>
+      </Row>}
 
       <Button variant="danger" size="lg" block onClick={() => setConfirm(true)}>{t.settings.reset}</Button>
 
@@ -65,7 +66,7 @@ export default function SettingsScreen() {
 
       <ConfirmSheet open={confirm} message={t.settings.resetConfirm} confirmLabel={t.settings.reset} danger
         onConfirm={() => { void repo.clearAll().then(() => location.reload()) }} onClose={() => setConfirm(false)} />
-      <PaywallSheet open={paywall} onClose={() => setPaywall(false)} />
+      {PRO_ENABLED && <PaywallSheet open={paywall} onClose={() => setPaywall(false)} />}
     </div>
   )
 }

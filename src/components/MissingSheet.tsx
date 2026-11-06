@@ -6,6 +6,7 @@ import { ingName } from '../lib/catalog'
 import { tap } from '../hooks/haptic'
 import { navigate, paths } from '../router'
 import { usePantry, usePlan } from '../state/store'
+import { PRO_ENABLED } from '../config/features'
 import { Button } from './Button'
 import { GlassIcon } from './GlassIcon'
 import { Sheet } from './Sheet'
@@ -27,7 +28,7 @@ export function MissingSheet({ open, onClose, ingredientId, drink, missing, onUs
   const lang = useLang()
   const { pantry, has, remove } = usePantry()
   const { isPro } = usePlan()
-  const pantryOn = isPro && pantry.size > 0
+  const pantryOn = (!PRO_ENABLED || isPro) && pantry.size > 0
 
   const subs = useMemo(() => (ingredientId ? getSubstitutes(ingredientId, pantryOn ? pantry : undefined) : []), [ingredientId, pantryOn, pantry])
   const similar = useMemo(() => getSimilarDrinks(drink.id, missing, pantryOn ? pantry : undefined, 4), [drink.id, missing, pantryOn, pantry])

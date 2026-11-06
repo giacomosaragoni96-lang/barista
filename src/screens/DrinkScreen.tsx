@@ -7,6 +7,7 @@ import { Icon } from '../components/Icon'
 import { IngredientRow } from '../components/IngredientRow'
 import { MissingSheet } from '../components/MissingSheet'
 import { PaywallSheet } from '../components/Paywall'
+import { PRO_ENABLED } from '../config/features'
 import { ScaleStepper } from '../components/ScaleStepper'
 import { StepList } from '../components/StepList'
 import { UnitToggle } from '../components/UnitToggle'
@@ -49,7 +50,8 @@ export default function DrinkScreen() {
   // nuova ricetta = sessione nuova
   useEffect(() => { setScale(1); setSubs({}); setMissing([]); setSheetFor(null) }, [params.id])
 
-  const pantryOn = isPro && pantry.size > 0
+  const unlocked = !PRO_ENABLED || isPro
+  const pantryOn = unlocked && pantry.size > 0
   const steps = useMemo(() => {
     if (!drink) return []
     return drink.steps.map((s) => {
@@ -169,7 +171,7 @@ export default function DrinkScreen() {
 
       <div className="mt-7 flex items-center justify-between gap-3 px-4">
         <UnitToggle value={settings.units} onChange={settings.setUnits} />
-        <ScaleStepper value={scale} onChange={setScale} locked={!isPro} onLockedTap={() => setPaywall(true)} />
+        <ScaleStepper value={scale} onChange={setScale} locked={!unlocked} onLockedTap={() => setPaywall(true)} />
       </div>
 
       <section ref={ingRef} className="recipe-section mt-8 px-4" aria-labelledby="ing-h">
@@ -227,7 +229,7 @@ export default function DrinkScreen() {
         missing={missing}
         onUse={(subId) => sheetFor && setSubs((s) => ({ ...s, [sheetFor]: subId }))}
       />
-      <PaywallSheet open={paywall} onClose={() => setPaywall(false)} />
+      {PRO_ENABLED && <PaywallSheet open={paywall} onClose={() => setPaywall(false)} />}
     </div>
   )
 }
