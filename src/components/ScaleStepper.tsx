@@ -23,7 +23,7 @@ export function ScaleStepper({ value, onChange, locked, onLockedTap }: Props) {
       <button
         type="button"
         onClick={() => locked && onLockedTap()}
-        className="flex min-w-[64px] items-center justify-center gap-1.5 border-0 bg-transparent text-[18px] font-bold text-amber"
+        className="flex min-w-[52px] items-center justify-center gap-1.5 border-0 bg-transparent text-[18px] font-bold text-amber"
         style={{ fontVariantNumeric: 'tabular-nums' }}
         aria-live="polite"
       >

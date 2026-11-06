@@ -116,7 +116,7 @@ export default function DrinkScreen() {
             const sub = subs[di.id]
             const shownId = sub ?? di.id
             const state = sub ? 'substituted' : missing.includes(di.id) ? 'missing' : 'normal'
-            const amount = di.unit === 'top' ? t.drink.top : formatAmount(di.amount, di.unit, settings.units, scale, lang) || '—'
+            const amount = di.unit === 'top' ? t.drink.top : formatAmount(di.amount, di.unit, settings.units, scale, lang)
             return (
               <IngredientRow
                 key={di.id + idx}

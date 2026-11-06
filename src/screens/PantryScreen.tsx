@@ -67,7 +67,7 @@ export default function PantryScreen() {
           style={{ borderColor: 'color-mix(in srgb, var(--color-amber) 50%, var(--color-line))' }}
         >
           <span className="text-amber"><Icon name="sparkles" /></span>
-          <span className="flex-1 text-[18px] font-semibold">{t.pantry.canMake}</span>
+          <span className="flex-1 text-[18px] font-semibold">{t.canMake.title}</span>
           <Icon name="chevron-left" className="rotate-180 text-muted" />
         </button>
 

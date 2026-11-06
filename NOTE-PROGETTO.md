@@ -47,9 +47,9 @@ Regole dati: `src/data/types.ts` e il contratto comune (non cambiarlo senza coor
 | # | Compito | Stato |
 |---|---|---|
 | T1 | Scheletro, schema dati, pipeline Pages, file di memoria | fatto |
-| T2 | Catalogo ingredienti (`ingredients.ts`) | da fare |
+| T2 | Catalogo ingredienti (`ingredients.ts`) | fatto (13:25, 216 ingredienti) |
 | T3 | Logica + storage + store + validate | fatto (13:16) |
-| T4a-g | Archivio drink, 8 file (elenchi chiusi per file: li aggiunge il coordinatore) | da fare |
+| T4a-g | Archivio drink, 8 file (elenchi chiusi per file, vedi sotto) | in corso dalle 14:13 (prima partenza 13:25 interrotta da limite di utilizzo 13:30-14:10) |
 | T5 | Design system + guscio app | fatto (13:18) |
 | T6 | Schermate | in corso (13:19) |
 | T7 | Verifica qualita | da fare |
@@ -66,3 +66,15 @@ Regole dati: `src/data/types.ts` e il contratto comune (non cambiarlo senza coor
 - Pagamenti Stripe (oggi Pro e finto).
 - Tema chiaro.
 - Foto dei drink (oggi illustrazione col colore del liquido).
+
+
+## Elenchi drink per file (T4)
+- iba-unforgettables.ts: 33 IBA Unforgettables (Alexander ... White Lady)
+- iba-contemporary.ts: 33 IBA Contemporary (Bellini ... Bramble)
+- iba-new-era.ts: 23 IBA New Era + Pornstar Martini, Gin Basil Smash, Jungle Bird, Mexican Mule, Kentucky Mule
+- italiani-aperitivi.ts: 28 (spritz vari, Hugo, Negroni Sbagliato, Garibaldi, Gin Tonic, Bombardino, Caffe Shakerato...)
+- classici-highball.ts: 35 (Vodka Lemon, White Russian, Amaretto Sour, Caipiroska, Rum e Pera...)
+- tiki-tropicali.ts: 17 · shot-party.ts: 19-20 · mocktail.ts: 20
+
+## Diario
+- 13:30-14:10 del 6 nov 2026: limite di utilizzo raggiunto, 8 agenti interrotti; ripresi alle 14:13. Checkpoint commit 027fa62.
