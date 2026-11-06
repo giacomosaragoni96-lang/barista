@@ -114,6 +114,11 @@ export const it = {
     missingName: (n: string) => `Manca ${n}`,
     goPantry: 'Vai alla dispensa',
     nothing: 'Nessun drink in questa sezione',
+    searchPlaceholder: 'Cerca tra i drink che puoi fare',
+    noResults: (q: string) => `Nessun risultato per "${q}"`,
+    noResultsHint: 'Prova un altro nome o un ingrediente. Qui ci sono solo i drink che la tua dispensa permette.',
+    noneHere: 'Nessun risultato in questa sezione',
+    lookIn: (tab: string) => `Guarda in "${tab}"`,
   },
   settings: {
     title: 'Impostazioni',

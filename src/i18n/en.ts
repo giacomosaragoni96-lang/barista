@@ -114,6 +114,11 @@ export const en: Dict = {
     missingName: (n: string) => `Missing ${n}`,
     goPantry: 'Go to pantry',
     nothing: 'No drinks in this section',
+    searchPlaceholder: 'Search drinks you can make',
+    noResults: (q: string) => `No results for "${q}"`,
+    noResultsHint: 'Try another name or an ingredient. This only searches drinks your pantry can cover.',
+    noneHere: 'Nothing in this section',
+    lookIn: (tab: string) => `Check "${tab}"`,
   },
   settings: {
     title: 'Settings',

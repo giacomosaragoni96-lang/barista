@@ -4,9 +4,11 @@ import { DrinkCard } from '../components/DrinkCard'
 import { EmptyState } from '../components/EmptyState'
 import { Icon } from '../components/Icon'
 import { Paywall } from '../components/Paywall'
+import { SearchBar } from '../components/SearchBar'
 import { useLang, useT } from '../i18n'
 import { ingName } from '../lib/catalog'
 import { checkDrink, drinksICanMake } from '../lib/pantry'
+import { searchDrinks } from '../lib/search'
 import { back, navigate, paths } from '../router'
 import { usePantry, usePlan } from '../state/store'
 
@@ -18,7 +20,21 @@ export default function CanMakeScreen() {
   const { isPro } = usePlan()
   const { pantry } = usePantry()
   const [tab, setTab] = useState<Tab>('ready')
-  const res = useMemo(() => drinksICanMake(pantry), [pantry])
+  const [q, setQ] = useState('')
+  const base = useMemo(() => drinksICanMake(pantry), [pantry])
+  const query = q.trim()
+  // Con il filtro attivo: restano solo i drink trovati dalla ricerca, in ordine di pertinenza.
+  const res = useMemo(() => {
+    if (!query) return base
+    const rank = new Map(searchDrinks(query, lang, 500).map((r, i) => [r.drink.id, i]))
+    const pick = <T,>(list: T[], idOf: (x: T) => string) =>
+      list.filter((x) => rank.has(idOf(x))).sort((a, b) => (rank.get(idOf(a)) ?? 0) - (rank.get(idOf(b)) ?? 0))
+    return {
+      ready: pick(base.ready, (d) => d.id),
+      withSubs: pick(base.withSubs, (d) => d.id),
+      missingOne: pick(base.missingOne, (x) => x.drink.id),
+    }
+  }, [base, query, lang])
 
   const header = (
     <div className="flex items-center gap-1 px-2 pt-3">
@@ -33,6 +49,21 @@ export default function CanMakeScreen() {
     { key: 'withSubs', label: t.pantry.withSubs, n: res.withSubs.length },
     { key: 'missingOne', label: t.pantry.missingOne, n: res.missingOne.length },
   ]
+
+  const total = res.ready.length + res.withSubs.length + res.missingOne.length
+  const elsewhere = tabs.find((x) => x.key !== tab && x.n > 0)
+  const emptyState = !query ? (
+    <EmptyState title={t.canMake.nothing} />
+  ) : total === 0 ? (
+    <EmptyState icon={<Icon name="search" size={28} />} title={t.canMake.noResults(query)} hint={t.canMake.noResultsHint} />
+  ) : (
+    <EmptyState
+      icon={<Icon name="search" size={28} />}
+      title={t.canMake.noneHere}
+      hint={elsewhere ? t.canMake.lookIn(elsewhere.label) : undefined}
+      action={elsewhere ? <Button variant="default" size="lg" onClick={() => setTab(elsewhere.key)}>{elsewhere.label} {elsewhere.n}</Button> : undefined}
+    />
+  )
 
   return (
     <div className="pb-8">
@@ -51,6 +82,11 @@ export default function CanMakeScreen() {
             </button>
           ))}
         </div>
+        {pantry.size > 0 && (
+          <div className="mx-4 mt-3">
+            <SearchBar value={q} onChange={setQ} placeholder={t.canMake.searchPlaceholder} />
+          </div>
+        )}
       </div>
       <div className="px-4">
         {pantry.size === 0 ? (
@@ -67,7 +103,7 @@ export default function CanMakeScreen() {
                 <li key={drink.id}><DrinkCard drink={drink} extra={<span className="text-miss">{t.canMake.missingName(ingName(missing, lang))}</span>} /></li>
               ))}
             </ul>
-          ) : <EmptyState title={t.canMake.nothing} />
+          ) : emptyState
         ) : (
           (tab === 'ready' ? res.ready : res.withSubs).length ? (
             <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
@@ -80,7 +116,7 @@ export default function CanMakeScreen() {
                 )
               })}
             </ul>
-          ) : <EmptyState title={t.canMake.nothing} />
+          ) : emptyState
         )}
       </div>
     </div>
