@@ -1,4 +1,5 @@
 import type { Base, Family, Glass, Ice, IngredientCategory, Taste, Technique, Unit } from '../data/types'
+import type { Gesture } from '../lib/steps'
 
 export const it = {
   appName: 'Barista',
@@ -48,6 +49,16 @@ export const it = {
     multiplier: 'Moltiplica le dosi',
     less: 'Meno',
     more: 'Più',
+    eyebrowIngredients: 'Cosa serve',
+    eyebrowGarnish: 'Per finire',
+    eyebrowSteps: 'Cosa fare',
+    eyebrowTip: 'Dal bancone',
+    stepOf: (n: number, tot: number) => `Passo ${n} di ${tot}`,
+    stepsAllDone: 'Tutto fatto',
+    stepNow: 'Adesso',
+    stepDone: 'Fatto',
+    stepsProgress: 'Avanzamento della preparazione',
+    sectionNav: 'Vai a una sezione',
   },
   missing: {
     dontHave: 'Non ce l\'ho',
@@ -155,6 +166,12 @@ export const it = {
     offline: 'Sei offline: l\'app funziona lo stesso.',
   },
   demo: { title: 'Demo componenti', glasses: 'Bicchieri', components: 'Componenti', language: 'Lingua', openSheet: 'Apri pannello', sheetBody: 'Trascina la maniglia verso il basso, tocca fuori o premi Esc per chiudere.' },
+  gesture: {
+    chill: 'Raffredda', ice: 'Ghiaccio', pour: 'Versa', shake: 'Shakera', 'dry-shake': 'Shakera a secco',
+    stir: 'Mescola', strain: 'Filtra', 'double-strain': 'Doppio filtro', muddle: 'Pesta', blend: 'Frulla',
+    top: 'Colma', layer: 'Stratifica', garnish: 'Guarnisci', express: 'Spremi la scorza', rim: 'Bordo',
+    flame: 'Fiamma', heat: 'Scalda', whip: 'Monta', serve: 'Servi', other: 'Passo',
+  } as Record<Gesture, string>,
   technique: {
     shake: 'Shake', 'dry-shake': 'Dry shake', stir: 'Stir', build: 'Build', blend: 'Blend',
     muddle: 'Pestare', layer: 'Layer', throw: 'Throw', swizzle: 'Swizzle',

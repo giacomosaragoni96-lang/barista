@@ -55,6 +55,7 @@ Regole dati: `src/data/types.ts` e il contratto comune (non cambiarlo senza coor
 | T7 | Verifica qualita | fatto (14:22, 18 test, 7 difetti trovati) |
 | T8 | Correzioni | fatto (14:25, tutti i 7 difetti corretti) |
 | T9 | Pubblicazione finale | fatto (14:28, commit 8847774, controllo finale VA BENE) |
+| T10 | Upgrade ricetta: passi con icona del gesto, grassetto, progresso, barra in alto, tipografia | fatto (6 nov, parser src/lib/steps.ts, icone GestureIcon.tsx, 79 test verdi, controllo finale VA BENE) |
 
 ## Come riprendere
 1. Leggi questo file e `CLAUDE.md`.
@@ -81,6 +82,9 @@ Regole dati: `src/data/types.ts` e il contratto comune (non cambiarlo senza coor
 
 - 14:32: rifinitura grafica pubblicata (commit 1b07c37), flussi riprovati sul sito live: ricerca 'spriz' -> Aperol Spritz -> Non ce l'ho -> Usa questo (Select), console pulita. Screenshot in docs/screenshots/.
 - 14:28: v1 completa online. 210 drink, 23 test verdi, build ok, controllo finale VA BENE.
+
+- 6 nov: T10 upgrade grafico dei passi (icone gesto, grassetto automatico, Passo n di N, barra sticky). Limiti: nei passi lunghi con molti ingredienti il grassetto resta sul verbo; plurali italiani degli ingredienti non presi; home/ricerca/dispensa cambiate solo nella tipografia globale.
+
 
 ## Cosa resta aperto (prossimi passi, in ordine)
 1. Drink omessi per prudenza (ricetta non certa): Illegal, VE.N.TO, Angelo Azzurro, Cuba Pantera. Zombie: dosi da verificare sulla scheda IBA.

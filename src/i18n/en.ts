@@ -1,4 +1,5 @@
 import type { Dict } from './it'
+import type { Gesture } from '../lib/steps'
 
 export const en: Dict = {
   appName: 'Barista',
@@ -48,6 +49,16 @@ export const en: Dict = {
     multiplier: 'Multiply amounts',
     less: 'Less',
     more: 'More',
+    eyebrowIngredients: 'What you need',
+    eyebrowGarnish: 'To finish',
+    eyebrowSteps: 'What to do',
+    eyebrowTip: 'From the bar',
+    stepOf: (n: number, tot: number) => `Step ${n} of ${tot}`,
+    stepsAllDone: 'All done',
+    stepNow: 'Now',
+    stepDone: 'Done',
+    stepsProgress: 'Method progress',
+    sectionNav: 'Jump to a section',
   },
   missing: {
     dontHave: 'Don\'t have it',
@@ -155,6 +166,12 @@ export const en: Dict = {
     offline: 'You are offline: the app still works.',
   },
   demo: { title: 'Component demo', glasses: 'Glasses', components: 'Components', language: 'Language', openSheet: 'Open sheet', sheetBody: 'Drag the handle down, tap outside or press Esc to close.' },
+  gesture: {
+    chill: 'Chill', ice: 'Ice', pour: 'Pour', shake: 'Shake', 'dry-shake': 'Dry shake',
+    stir: 'Stir', strain: 'Strain', 'double-strain': 'Double strain', muddle: 'Muddle', blend: 'Blend',
+    top: 'Top up', layer: 'Layer', garnish: 'Garnish', express: 'Express zest', rim: 'Rim',
+    flame: 'Flame', heat: 'Heat', whip: 'Whip', serve: 'Serve', other: 'Step',
+  } as Record<Gesture, string>,
   technique: {
     shake: 'Shake', 'dry-shake': 'Dry shake', stir: 'Stir', build: 'Build', blend: 'Blend',
     muddle: 'Muddle', layer: 'Layer', throw: 'Throw', swizzle: 'Swizzle',

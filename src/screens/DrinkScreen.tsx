@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Button } from '../components/Button'
 import { EmptyState } from '../components/EmptyState'
+import { GestureIcon } from '../components/GestureIcon'
 import { GlassIcon } from '../components/GlassIcon'
 import { Icon } from '../components/Icon'
 import { IngredientRow } from '../components/IngredientRow'
@@ -62,6 +63,39 @@ export default function DrinkScreen() {
     })
   }, [drink, lang, subs])
 
+  const ingredientNames = useMemo(
+    () => (drink ? drink.ingredients.map((di) => ingName(subs[di.id] ?? di.id, lang)) : []),
+    [drink, lang, subs],
+  )
+
+  // barra appiccicata: titolo visibile dopo l'header, sezione corrente evidenziata
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const ingRef = useRef<HTMLElement>(null)
+  const stepsRef = useRef<HTMLElement>(null)
+  const [stuck, setStuck] = useState(false)
+  const [active, setActive] = useState<'ing' | 'steps' | null>(null)
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return
+    const titleEl = titleRef.current
+    const ingEl = ingRef.current
+    const stepsEl = stepsRef.current
+    const seen = { ing: false, steps: false }
+    const pick = () => setActive(seen.steps ? 'steps' : seen.ing ? 'ing' : null)
+    const o1 = new IntersectionObserver(([e]) => setStuck(!e.isIntersecting), { rootMargin: '-90px 0px 0px 0px' })
+    const o2 = new IntersectionObserver((es) => {
+      for (const e of es) seen[e.target === stepsEl ? 'steps' : 'ing'] = e.isIntersecting
+      pick()
+    }, { rootMargin: '-110px 0px -55% 0px' })
+    if (titleEl) o1.observe(titleEl)
+    if (ingEl) o2.observe(ingEl)
+    if (stepsEl) o2.observe(stepsEl)
+    return () => { o1.disconnect(); o2.disconnect() }
+  }, [drink?.id])
+  const jump = (el: HTMLElement | null) => {
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    el?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })
+  }
+
   if (!drink) {
     return (
       <div>
@@ -89,26 +123,39 @@ export default function DrinkScreen() {
 
   return (
     <div className="page-in pb-10">
-      <TopBar
-        right={
+      <nav className="recipe-bar" data-stuck={stuck} aria-label={t.drink.sectionNav}>
+        <div className="flex items-center gap-2">
+          <button type="button" aria-label={t.state.back} onClick={() => back(paths.search)}
+            className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-0 bg-transparent text-cream">
+            <Icon name="chevron-left" size={26} />
+          </button>
+          <button type="button" className="jump" aria-current={stuck && active === 'ing' ? 'true' : undefined} onClick={() => jump(ingRef.current)}>
+            {t.drink.ingredients}
+          </button>
+          <button type="button" className="jump" aria-current={stuck && active === 'steps' ? 'true' : undefined} onClick={() => jump(stepsRef.current)}>
+            {t.drink.steps}
+          </button>
           <button
             type="button"
             aria-pressed={isFav}
             aria-label={isFav ? t.drink.favoriteRemove : t.drink.favoriteAdd}
             onClick={() => fav.toggle(drink.id)}
-            className={`flex h-12 w-12 items-center justify-center rounded-full border-0 bg-transparent transition-colors duration-150 ${isFav ? 'text-amber' : 'text-cream'}`}
+            className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-0 bg-transparent transition-colors duration-150 ${isFav ? 'text-amber' : 'text-cream'}`}
           >
             <Icon name={isFav ? 'star-filled' : 'star'} size={26} />
           </button>
-        }
-      />
+        </div>
+        <div aria-hidden="true" className={`font-display h-5 truncate px-12 text-center text-[14.5px] leading-5 text-muted transition-opacity duration-150 ${stuck ? 'opacity-100' : 'opacity-0'}`}>
+          {drink.name}
+        </div>
+      </nav>
 
-      <header className="-mt-12 px-5 pt-12 text-center"
+      <header className="px-5 pt-1 text-center"
         style={{ background: `radial-gradient(ellipse 70% 60% at 50% 30%, color-mix(in srgb, ${drink.color} 22%, transparent), transparent 75%)` }}>
-        <div className="mx-auto mt-2 flex justify-center">
+        <div className="mx-auto flex justify-center">
           <GlassIcon glass={drink.glass} color={drink.color} size={128} />
         </div>
-        <h1 className="font-display mb-0 mt-3 text-[34px] leading-[1.08]">{drink.name}</h1>
+        <h1 ref={titleRef} className="t-recipe mb-0 mt-3">{drink.name}</h1>
         <p className="mx-auto mb-0 mt-2 max-w-[34ch] text-[17px] leading-snug text-muted">{l10n(drink.description, lang)}</p>
         <div className="mt-4 flex flex-wrap justify-center gap-2">
           <Badge>{t.glass[drink.glass]}</Badge>
@@ -125,8 +172,8 @@ export default function DrinkScreen() {
         <ScaleStepper value={scale} onChange={setScale} locked={!isPro} onLockedTap={() => setPaywall(true)} />
       </div>
 
-      <section className="mt-6 px-4" aria-labelledby="ing-h">
-        <h2 id="ing-h" className="font-display m-0 mb-1 px-1 text-[24px]">{t.drink.ingredients}</h2>
+      <section ref={ingRef} className="recipe-section mt-8 px-4" aria-labelledby="ing-h">
+        <SectionHead id="ing-h" icon={<Icon name="bottle" size={22} />} eyebrow={t.drink.eyebrowIngredients} title={t.drink.ingredients} />
         <ul className="card m-0 list-none px-3 py-1">
           {drink.ingredients.map((di, idx) => {
             const sub = subs[di.id]
@@ -152,25 +199,25 @@ export default function DrinkScreen() {
         </ul>
       </section>
 
-      <section className="mt-7 px-4">
-        <h2 className="font-display m-0 mb-2 px-1 text-[24px]">{t.drink.garnish}</h2>
-        <p className="m-0 px-1 text-[18px]">{l10n(drink.garnish, lang)}</p>
+      <section className="recipe-section mt-8 px-4" aria-labelledby="garn-h">
+        <SectionHead id="garn-h" icon={<GestureIcon gesture="garnish" size={24} />} eyebrow={t.drink.eyebrowGarnish} title={t.drink.garnish} />
+        <p className="t-body m-0 px-1">{l10n(drink.garnish, lang)}</p>
       </section>
 
-      <section className="mt-7 px-4" aria-labelledby="steps-h">
-        <h2 id="steps-h" className="font-display m-0 mb-3 px-1 text-[24px]">{t.drink.steps}</h2>
-        <StepList key={drink.id + lang} steps={steps} />
+      <section ref={stepsRef} className="recipe-section mt-8 px-4" aria-labelledby="steps-h">
+        <SectionHead id="steps-h" icon={<GestureIcon gesture="stir" size={24} />} eyebrow={t.drink.eyebrowSteps} title={t.drink.steps} />
+        <StepList key={drink.id + lang} steps={steps} ingredientNames={ingredientNames} />
       </section>
 
       {drink.tip && (
-        <aside className="mx-4 mt-7 rounded-[18px] border p-4"
+        <aside className="recipe-section mx-4 mt-8 rounded-[20px] border p-4" aria-labelledby="tip-h"
           style={{ background: 'color-mix(in srgb, var(--color-amber) 9%, transparent)', borderColor: 'color-mix(in srgb, var(--color-amber) 35%, transparent)' }}>
-          <div className="mb-1 flex items-center gap-2 font-semibold text-amber"><Icon name="sparkles" size={20} />{t.drink.tipTitle}</div>
-          <p className="m-0 text-[17.5px] leading-snug">{l10n(drink.tip, lang)}</p>
+          <SectionHead id="tip-h" icon={<Icon name="sparkles" size={22} />} eyebrow={t.drink.eyebrowTip} title={t.drink.tip} />
+          <p className="t-body m-0 px-1">{l10n(drink.tip, lang)}</p>
         </aside>
       )}
 
-      <p className="mx-6 mt-8 text-center text-[13.5px] text-muted">{t.settings.responsibly}</p>
+      <p className="t-note mx-6 mt-10 text-center !text-[13.5px]">{t.settings.responsibly}</p>
 
       <MissingSheet
         open={sheetFor !== null}
@@ -181,6 +228,18 @@ export default function DrinkScreen() {
         onUse={(subId) => sheetFor && setSubs((s) => ({ ...s, [sheetFor]: subId }))}
       />
       <PaywallSheet open={paywall} onClose={() => setPaywall(false)} />
+    </div>
+  )
+}
+
+function SectionHead({ id, icon, eyebrow, title }: { id: string; icon: React.ReactNode; eyebrow: string; title: string }) {
+  return (
+    <div className="section-head">
+      <span className="section-icon" aria-hidden="true">{icon}</span>
+      <div className="min-w-0">
+        <p className="t-eyebrow m-0 mb-0.5">{eyebrow}</p>
+        <h2 id={id} className="t-section">{title}</h2>
+      </div>
     </div>
   )
 }

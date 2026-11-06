@@ -38,7 +38,7 @@ body {
   color: var(--color-cream);
   font-family: var(--font-sans);
   font-size: 17px;
-  line-height: 1.45;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   touch-action: manipulation;
   overscroll-behavior: none;
@@ -61,12 +61,50 @@ button { font: inherit; color: inherit; cursor: pointer; }
   letter-spacing: -0.01em;
 }
 
+h1, h2, h3 { text-wrap: balance; }
+strong, b { font-weight: 700; color: var(--color-cream); }
+p { text-wrap: pretty; }
+
+/* Scala tipografica: titolo ricetta 34, titolo sezione 24, occhiello 12.5, corpo 18, nota 14.5 */
+.t-recipe { font-family: var(--font-display); font-optical-sizing: auto; font-weight: 650; font-size: 34px; line-height: 1.08; letter-spacing: -0.015em; }
+.t-section { font-family: var(--font-display); font-optical-sizing: auto; font-weight: 600; font-size: 24px; line-height: 1.15; letter-spacing: -0.01em; }
+.t-eyebrow { font-size: 12.5px; font-weight: 700; line-height: 1.2; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-amber); }
+.t-body { font-size: 18px; line-height: 1.45; }
+.t-note { font-size: 14.5px; line-height: 1.4; color: var(--color-muted); }
+
 .dose {
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: tabular-nums lining-nums;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 21px;
+  line-height: 1.2;
   color: var(--color-amber);
 }
+
+/* Passi di preparazione */
+.step-card { transition: border-color 160ms, background-color 160ms, opacity 160ms, transform 120ms; }
+.step-card:active { transform: scale(0.99); }
+.step-current { background: color-mix(in srgb, var(--color-amber) 7%, var(--color-surface)); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-amber) 16%, transparent); }
+.step-done { opacity: 0.6; }
+.step-eyebrow { font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-amber); }
+.step-done .step-eyebrow { color: var(--color-muted); }
+.step-now { flex-shrink: 0; border-radius: 999px; background: var(--color-amber); color: #1A1005; padding: 1px 8px; font-size: 11.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+.step-text { font-size: 18.5px; line-height: 1.4; color: color-mix(in srgb, var(--color-cream) 85%, transparent); }
+.step-text strong { font-weight: 650; color: var(--color-cream); }
+.step-text strong.has-num { white-space: nowrap; }
+.step-bar { transition: width 220ms ease-out; }
+.step-item { scroll-margin-top: 130px; scroll-margin-bottom: 90px; }
+
+/* Sezioni ricetta */
+.recipe-section { scroll-margin-top: 120px; }
+.section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding: 0 4px; }
+.section-head h2 { margin: 0; }
+.section-icon { display: flex; height: 40px; width: 40px; flex-shrink: 0; align-items: center; justify-content: center; border-radius: 12px; background: var(--color-surface-2); color: var(--color-amber); }
+
+/* Barra appiccicata della ricetta */
+.recipe-bar { position: sticky; top: 0; z-index: 20; padding: 8px 8px 6px; transition: background-color 160ms, border-color 160ms; border-bottom: 1px solid transparent; }
+.recipe-bar[data-stuck="true"] { background: color-mix(in srgb, var(--color-bg) 97%, transparent); backdrop-filter: blur(10px); border-bottom-color: var(--color-line); }
+.jump { display: inline-flex; flex: 1 1 0; min-width: 0; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 6px; border-radius: 999px; border: 1px solid var(--color-line); background: var(--color-surface); color: var(--color-cream); font-size: 15px; font-weight: 600; white-space: nowrap; transition: background-color 160ms, border-color 160ms, color 160ms; }
+.jump[aria-current="true"] { background: var(--color-amber); border-color: var(--color-amber); color: #1A1005; }
 
 .scroll-area {
   overflow-y: auto;
