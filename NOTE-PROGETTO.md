@@ -79,6 +79,7 @@ Regole dati: `src/data/types.ts` e il contratto comune (non cambiarlo senza coor
 ## Diario
 - 13:30-14:10 del 6 nov 2026: limite di utilizzo raggiunto, 8 agenti interrotti; ripresi alle 14:13. Checkpoint commit 027fa62.
 
+- 14:32: rifinitura grafica pubblicata (commit 1b07c37), flussi riprovati sul sito live: ricerca 'spriz' -> Aperol Spritz -> Non ce l'ho -> Usa questo (Select), console pulita. Screenshot in docs/screenshots/.
 - 14:28: v1 completa online. 210 drink, 23 test verdi, build ok, controllo finale VA BENE.
 
 ## Cosa resta aperto (prossimi passi, in ordine)
