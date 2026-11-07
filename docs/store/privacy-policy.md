@@ -2,16 +2,16 @@
 NOTA PER L'EDITORE (cancellare prima di pubblicare):
 - Compila [DEVELOPER NAME], [CONTACT EMAIL] e [HOSTING PROVIDER].
 - Verificato nel codice il 7 novembre 2026: l'app non contiene analytics, pubblicità, login, né chiamate di rete verso server nostri o di terzi per i dati dell'utente. Salva solo in localStorage (preferiti, dispensa, visti di recente, lingua e unità di misura). I font sono inclusi nell'app.
-- Se in futuro aggiungi login, Supabase, analytics o pagamenti, QUESTA INFORMATIVA DEVE ESSERE AGGIORNATA prima di rilasciare.
+- Se in futuro aggiungi login, Supabase, analytics o pubblicità, QUESTA INFORMATIVA DEVE ESSERE AGGIORNATA prima di rilasciare.
 - Pubblicala a un URL pubblico stabile (pagina web), non solo come file.
 -->
 
 # Privacy Policy
 
-**App:** Barista (working name, replace with the final name)
+**App:** Barback
 **Last updated:** 7 November 2026
 
-This policy explains what the app does with your information. The short version: **Barista does not collect your personal data. Everything you save stays on your device.**
+This policy explains what the app does with your information. The short version: **Barback does not collect your personal data. Everything you save stays on your device.**
 
 ## Who we are
 
@@ -45,7 +45,7 @@ The app store you used to get the app (Google Play or the Apple App Store) may c
 
 ## Children
 
-Barista is **not directed to children under 13**, and it is not meant for minors. It contains cocktail recipes, many of which include alcohol, and it is intended for adults of legal drinking age in their country. We do not knowingly collect personal data from anyone, children included. If you believe a child has given us personal data, write to [CONTACT EMAIL] and we will look into it.
+Barback is **not directed to children under 13**, and it is not meant for minors. It contains cocktail recipes, many of which include alcohol, and it is intended for adults of legal drinking age in their country. We do not knowingly collect personal data from anyone, children included. If you believe a child has given us personal data, write to [CONTACT EMAIL] and we will look into it.
 
 ## Your rights (GDPR and similar laws)
 

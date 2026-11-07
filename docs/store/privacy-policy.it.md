@@ -2,16 +2,16 @@
 NOTA PER L'EDITORE (cancellare prima di pubblicare):
 - Compila [DEVELOPER NAME], [CONTACT EMAIL] e [HOSTING PROVIDER].
 - Verificato nel codice il 7 novembre 2026: l'app non contiene analytics, pubblicità, login, né chiamate di rete verso server nostri o di terzi per i dati dell'utente. Salva solo in localStorage (preferiti, dispensa, visti di recente, lingua e unità di misura). I font sono inclusi nell'app.
-- Se in futuro aggiungi login, Supabase, analytics o pagamenti, QUESTA INFORMATIVA DEVE ESSERE AGGIORNATA prima di rilasciare.
+- Se in futuro aggiungi login, Supabase, analytics o pubblicità, QUESTA INFORMATIVA DEVE ESSERE AGGIORNATA prima di rilasciare.
 - Pubblicala a un URL pubblico stabile (pagina web), non solo come file.
 -->
 
 # Informativa sulla privacy
 
-**App:** Barista (nome provvisorio, sostituire con il nome definitivo)
+**App:** Barback
 **Ultimo aggiornamento:** 7 novembre 2026
 
-Questa informativa spiega cosa fa l'app con le tue informazioni. In breve: **Barista non raccoglie i tuoi dati personali. Tutto ciò che salvi resta sul tuo dispositivo.**
+Questa informativa spiega cosa fa l'app con le tue informazioni. In breve: **Barback non raccoglie i tuoi dati personali. Tutto ciò che salvi resta sul tuo dispositivo.**
 
 ## Chi siamo
 
@@ -45,7 +45,7 @@ Lo store da cui hai scaricato l'app (Google Play o App Store di Apple) può racc
 
 ## Minori
 
-Barista **non è rivolta ai minori di 13 anni** e non è pensata per i minorenni. Contiene ricette di cocktail, molte delle quali con alcol, ed è destinata ad adulti in età legale per bere alcolici nel proprio paese. Non raccogliamo consapevolmente dati personali da nessuno, bambini compresi. Se ritieni che un minore ci abbia dato dati personali, scrivi a [CONTACT EMAIL] e verificheremo.
+Barback **non è rivolta ai minori di 13 anni** e non è pensata per i minorenni. Contiene ricette di cocktail, molte delle quali con alcol, ed è destinata ad adulti in età legale per bere alcolici nel proprio paese. Non raccogliamo consapevolmente dati personali da nessuno, bambini compresi. Se ritieni che un minore ci abbia dato dati personali, scrivi a [CONTACT EMAIL] e verificheremo.
 
 ## I tuoi diritti (GDPR e leggi simili)
 

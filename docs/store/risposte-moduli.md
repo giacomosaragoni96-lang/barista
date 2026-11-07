@@ -1,8 +1,8 @@
 # Risposte pronte per i moduli degli store
 
-Preparate il 7 novembre 2026, in italiano semplice. Si basano su ciò che ho verificato nel codice (cartella `src/`): l'app salva solo preferiti, dispensa, visti di recente e impostazioni nella memoria del dispositivo (localStorage). Non ci sono chiamate di rete per i dati dell'utente, né analytics, né pubblicità, né login, né pagamenti, né fotocamera/posizione/contatti. I font sono inclusi nell'app (nessun servizio esterno).
+Preparate il 7 novembre 2026, in italiano semplice. Si basano su ciò che ho verificato nel codice (cartella `src/`): l'app (nome: **Barback**, completamente gratuita) salva solo preferiti, dispensa, visti di recente e impostazioni nella memoria del dispositivo (localStorage). Non ci sono chiamate di rete per i dati dell'utente, né analytics, né pubblicità, né login, né fotocamera/posizione/contatti. I font sono inclusi nell'app (nessun servizio esterno).
 
-**Se un giorno aggiungi login, analytics, pubblicità o pagamenti, queste risposte vanno rifatte.**
+**Se un giorno aggiungi login, analytics o pubblicità, queste risposte vanno rifatte.**
 
 I nomi dei campi sono quelli in inglese dei moduli, perché è come li vedrai a schermo. Non posso aprire i moduli reali da qui: i nomi esatti possono cambiare un poco, la sostanza no.
 
@@ -45,8 +45,8 @@ Dubbio onesto: se l'app è un'app web caricata da un tuo server (percorso Androi
 | Account / login | Nessuno: non serve nulla per l'eliminazione dell'account |
 | Contenuti generati dagli utenti | Nessuno |
 | Funzioni finanziarie, salute, notizie, governo, COVID | **No** a tutte |
-| Acquisti in-app / abbonamenti | Nessuno |
-| App gratuita o a pagamento | Attenzione: su Google Play la scelta "gratuita" **non si può più cambiare in "a pagamento"** dopo la pubblicazione. Se un giorno vuoi funzioni a pagamento si fa con acquisti dentro l'app, che sono ammessi anche in un'app gratuita. Decidere con calma. |
+| Acquisti in-app | Nessuno |
+| App gratuita o a pagamento | **Gratuita (Free)**. Su Google Play questa scelta non si può cambiare dopo la pubblicazione: va bene, l'app resta gratuita. |
 | Leggi sull'esportazione (Export laws) | Spunta la conferma standard: l'app non contiene crittografia propria |
 | Categoria | Food & Drink (Cibo e bevande) |
 
@@ -84,13 +84,13 @@ Cosa rispondere e perché:
 | Account / login | **Nessun account**: non serve account demo per i revisori e non serve la funzione "elimina account" |
 | Contenuti generati dagli utenti (UGC) | **Nessuno** (nessuna chat, commenti, condivisione di contenuti): le regole sui contenuti degli utenti non si applicano |
 | Pubblicità | **Nessuna** |
-| Acquisti in-app / abbonamenti | **Nessuno** |
-| Funzioni di pagamento / accesso a sistemi di pagamento | **Nessuno** (nessun Apple Pay, nessuna carta, nessun checkout) |
-| Contenuti di terzi / diritti | Le ricette sono scritte da noi; i nomi dei drink sono nomi comuni. Vedi la nota sui marchi nella checklist |
+| Acquisti in-app | **Nessuno** (app gratuita) |
+| Funzioni di pagamento | **Nessuna** (nessun Apple Pay, nessuna carta, nessun checkout) |
+| Contenuti di terzi / diritti | Le ricette sono scritte da noi; i nomi dei drink sono nomi comuni. Vedi la nota sui marchi e la sezione "Rischio nome" nella checklist |
 
 Testo suggerito per le "Note per la revisione" (App Review Information):
 
-> Barista is a cocktail recipe reference. No account or sign-in is required. All data (favorites, pantry, settings) is stored locally on the device. The app does not collect personal data, show ads, or sell alcohol. It works offline.
+> Barback is a free cocktail recipe reference. No account or sign-in is required. All data (favorites, pantry, settings) is stored locally on the device. The app does not collect personal data, show ads, or sell alcohol. It works offline.
 
 ---
 
@@ -103,8 +103,8 @@ Testo suggerito per le "Note per la revisione" (App Review Information):
 | Pubblicità? | No |
 | Account / login? | No |
 | Contenuti generati dagli utenti? | No |
-| Acquisti o abbonamenti? | No |
-| Pagamenti di qualunque tipo? | No |
+| Acquisti in-app? | No |
+| Costo per chi la scarica | Zero: app gratuita |
 | Alcol? | Sì, riferimenti (ricette); nessuna vendita |
 | Età | Google: pubblico 18+; Apple: la fascia più alta proposta dal questionario con alcol "frequente" |
 | Crittografia | Solo standard (HTTPS): esente |

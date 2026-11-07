@@ -1,8 +1,8 @@
-# Testi per gli store - Barista v1.0
+# Testi per gli store - Barback v1.0
 
-Preparati il 7 novembre 2026. "Barista" è un segnaposto: se il nome definitivo cambia, aggiornare il titolo e le parole chiave (nelle parole chiave non ripetere parole già presenti nel titolo: Apple le indicizza già).
-Tutti i testi sono stati contati con un controllo automatico: i numeri tra parentesi sono caratteri usati / limite. I testi descrivono solo ciò che l'app fa davvero oggi.
-Prima di inviare, compila `[CONTACT EMAIL]` nelle descrizioni lunghe. Le descrizioni sono scritte in testo semplice: i trattini "-" funzionano come elenco su entrambi gli store.
+Preparati il 7 novembre 2026, aggiornati lo stesso giorno con le decisioni dell'utente: nome nell'app **Barback**, titolo negli store **più lungo e unico** (vedi "Titoli" qui sotto e la sezione "Rischio nome" della checklist). L'app è completamente gratuita: nei testi compare solo "gratis / free, senza pubblicità, senza account".
+Tutti i testi sono stati contati con uno script: i numeri tra parentesi sono caratteri usati / limite. I testi descrivono solo ciò che l'app fa davvero oggi.
+Prima di inviare, compila `[DEVELOPER NAME]` e `[CONTACT EMAIL]` nelle descrizioni lunghe. Le descrizioni sono scritte in testo semplice: i trattini "-" funzionano come elenco su entrambi gli store.
 
 ## Attenzione: i limiti reali
 
@@ -23,25 +23,50 @@ La "descrizione breve" da 80 esiste solo su Google Play; il sottotitolo dell'App
 - **Google Play**: Food & Drink (Cibo e bevande). Alternativa: Books & Reference (Libri e consultazione).
 - **App Store**: principale Food & Drink (Cibo e bevande); secondaria Reference (Consultazione).
 
+## Titoli (nome negli store) e perché sono lunghi
+
+Esistono già app di cocktail chiamate Barback su entrambi gli store, quindi il titolo "Barback" da solo non è unico e rischia il rifiuto (Apple non ammette due app con lo stesso nome) o la confusione. Il nome dentro l'app resta **Barback**; negli store si usa un titolo con una parte descrittiva. Nessun titolo contiene "Cocktail Assistant" o "Cocktail Companion" (sono titoli di altre app). Conteggi fatti con script, limite 30 su entrambi gli store.
+
+**Inglese** (preferito: A)
+
+| | Titolo | Caratteri |
+|---|---|---|
+| A | `Barback: Recipes & Subs` | 23/30 |
+| B | `Barback: Bar Recipes & Subs` | 27/30 |
+| C | `Barback: Recipes & Pantry` | 25/30 |
+| D | `Barback: Recipes, Subs, Pantry` | 30/30 |
+
+**Italiano** (preferito: A)
+
+| | Titolo | Caratteri |
+|---|---|---|
+| A | `Barback: Ricette e Sostituti` | 28/30 |
+| B | `Barback: Ricette e Dispensa` | 27/30 |
+| C | `Barback: Dosi e Sostituti` | 25/30 |
+| D | `Barback: Ricette per il Bar` | 27/30 |
+
+Scelta consigliata: **A** in entrambe le lingue. Motivo: è corta (lascia aria al nome), dice a cosa serve e cosa la distingue (i sostituti). B, C e D sono il piano B, in ordine (vedi checklist, "Rischio nome").
+Se usi B, C o D ricontrolla che sottotitolo App Store e parole chiave non ripetano le parole del titolo (Apple le indicizza già): con EN-C, EN-D e IT-B togli "pantry" / "dispensa" dalle parole chiave.
+
 ---
 
 ## INGLESE (mercato principale)
 
 ### Google Play (English)
 
-**Titolo** (25/30):
+**Titolo** (23/30):
 ```
-Barista: Cocktail Recipes
-```
-
-**Descrizione breve** (74/80):
-```
-Cocktail recipes with exact measures, glass, method and smart substitutes.
+Barback: Recipes & Subs
 ```
 
-**Descrizione completa** (2180/4000):
+**Descrizione breve** (75/80):
 ```
-Barista is a fast cocktail reference for the bar, the kitchen or the sofa. Search a drink, see exactly what goes in it, and make it step by step.
+Free cocktail recipes with exact measures, method and substitutes. Offline.
+```
+
+**Descrizione completa** (2360/4000):
+```
+Barback is a free cocktail recipe reference for the bar, the kitchen or the sofa. Search a drink, see exactly what goes in it, make it step by step, and swap any ingredient you are missing.
 
 WHAT YOU GET
 
@@ -63,51 +88,51 @@ MADE FOR THE BAR
 - Dark theme, easy on the eyes in low light.
 - Large touch targets and a clear layout, so you can read a recipe at a glance with busy hands.
 - Works offline once the app has loaded, so a weak signal behind the bar is not a problem.
-- No account and no sign-up. No ads.
+- Free to use, no ads, no account and no sign-up.
 - Your favorites, pantry and settings stay on your device. The app does not collect your data.
 - Available in English and Italian.
 
 GOOD TO KNOW
 
-Recipes show standard versions of each drink. Tastes and local habits differ, so adjust them to your taste. Approximate alcohol content is an estimate, not a measurement. Please drink responsibly. This app is intended for adults of legal drinking age.
+Recipes show standard versions of each drink. Tastes and local habits differ, so adjust them to your taste. Approximate alcohol content is an estimate, not a measurement. Please drink responsibly. This app is intended for adults of legal drinking age. Barback is an independent app by [DEVELOPER NAME] and is not affiliated with any other app or company with a similar name.
 
 Questions or ideas? Write to us at [CONTACT EMAIL].
 ```
 
-**Novità della versione** (357/500):
+**Novità della versione** (363/500):
 ```
-First release of Barista.
+First release of Barback.
 - Search over 200 cocktails by name or by ingredient
 - Exact measures in ml, cl or oz, scalable from 1 to 10 servings
 - Glass, ice, technique, garnish and step-by-step method with gesture icons
 - "Don't have it": substitutes and similar drinks
 - Pantry and "What I can make"
-- Works offline, no account needed
+- Free, works offline, no account needed
 - English and Italian
 ```
 
 ### App Store (English)
 
-**Nome app** (25/30): stesso del titolo sopra.
+**Nome app** (23/30): stesso del titolo sopra.
 
-**Sottotitolo** (27/30):
+**Sottotitolo** (28/30):
 ```
-Recipes, doses, substitutes
-```
-
-**Testo promozionale** (facoltativo, modificabile senza nuova versione) (148/170):
-```
-Look up a cocktail in seconds: exact measures, glass, technique and step-by-step method. Missing an ingredient? Tap "Don't have it" for substitutes.
+Exact measures, step by step
 ```
 
-**Descrizione** (2180/4000): stessa descrizione completa di Google Play, sopra.
-
-**Parole chiave** (100/100, separate da virgola, senza spazi):
+**Testo promozionale** (facoltativo, modificabile senza nuova versione) (138/170):
 ```
-bartender,mixology,drinks,bar,spritz,negroni,mojito,margarita,martini,pantry,offline,shaker,mocktail
+Look up a cocktail in seconds: exact measures, glass, technique and step-by-step method. Missing an ingredient? Tap "Don't have it". Free.
 ```
 
-**Novità della versione** (max 4000, qui 357): stesso testo di Google Play.
+**Descrizione** (2360/4000): stessa descrizione completa di Google Play, sopra.
+
+**Parole chiave** (95/100), separate da virgola, senza spazi (non ripetono parole del titolo):
+```
+cocktail,bartender,mixology,bar,spritz,negroni,mojito,margarita,martini,pantry,offline,mocktail
+```
+
+**Novità della versione** (max 4000, qui 363): stesso testo di Google Play.
 
 ---
 
@@ -115,19 +140,19 @@ bartender,mixology,drinks,bar,spritz,negroni,mojito,margarita,martini,pantry,off
 
 ### Google Play (Italiano)
 
-**Titolo** (25/30):
+**Titolo** (28/30):
 ```
-Barista: Ricette Cocktail
-```
-
-**Descrizione breve** (78/80):
-```
-Ricette cocktail con dosi esatte, bicchiere, passi e sostituti. Anche offline.
+Barback: Ricette e Sostituti
 ```
 
-**Descrizione completa** (2304/4000):
+**Descrizione breve** (74/80):
 ```
-Barista è un ricettario di cocktail veloce, per il bancone, la cucina o il divano. Cerchi un drink, vedi esattamente cosa ci va dentro e lo prepari passo dopo passo.
+Ricette cocktail gratis con dosi esatte, passi e sostituti. Anche offline.
+```
+
+**Descrizione completa** (2466/4000):
+```
+Barback è un ricettario di cocktail gratuito e veloce, per il bancone, la cucina o il divano. Cerchi un drink, vedi esattamente cosa ci va dentro, lo prepari passo dopo passo e sostituisci l'ingrediente che ti manca.
 
 COSA OFFRE
 
@@ -149,49 +174,48 @@ PENSATA PER IL BANCONE
 - Tema scuro, riposante con poca luce.
 - Pulsanti grandi e impaginazione chiara: leggi una ricetta a colpo d'occhio anche con le mani occupate.
 - Funziona offline dopo il primo caricamento: con poco segnale dietro al bancone non hai problemi.
-- Nessun account e nessuna registrazione. Nessuna pubblicità.
+- Gratis, senza pubblicità, senza account e senza registrazione.
 - Preferiti, dispensa e impostazioni restano sul tuo dispositivo. L'app non raccoglie i tuoi dati.
 - Disponibile in italiano e in inglese.
 
 DA SAPERE
 
-Le ricette riportano le versioni standard di ogni drink. Gusti e abitudini cambiano, quindi sentiti libero di adattarle. La gradazione alcolica è una stima, non una misura. Bevi responsabilmente. L'app è pensata per adulti in età legale per bere alcolici.
+Le ricette riportano le versioni standard di ogni drink. Gusti e abitudini cambiano, quindi sentiti libero di adattarle. La gradazione alcolica è una stima, non una misura. Bevi responsabilmente. L'app è pensata per adulti in età legale per bere alcolici. Barback è un'app indipendente di [DEVELOPER NAME], non affiliata ad altre app o aziende con un nome simile.
 
 Domande o idee? Scrivici a [CONTACT EMAIL].
 ```
 
-**Novità della versione** (352/500):
+**Novità della versione** (360/500):
 ```
-Prima versione di Barista.
+Prima versione di Barback.
 - Cerca oltre 200 cocktail per nome o per ingrediente
 - Dosi esatte in ml, cl o oz, da 1 a 10 porzioni
 - Bicchiere, ghiaccio, tecnica, guarnizione e preparazione passo per passo con icone dei gesti
 - "Non ce l'ho": sostituti e drink simili
 - Dispensa e "Cosa posso fare"
-- Funziona offline, senza account
+- Gratis, funziona offline, senza account
 - Italiano e inglese
 ```
 
 ### App Store (Italiano)
 
-**Nome app** (25/30): stesso del titolo sopra.
+**Nome app** (28/30): stesso del titolo sopra.
 
-**Sottotitolo** (23/30):
+**Sottotitolo** (29/30):
 ```
-Dosi esatte e sostituti
-```
-
-**Testo promozionale** (facoltativo, modificabile senza nuova versione) (150/170):
-```
-Trova un cocktail in pochi secondi: dosi esatte, bicchiere, tecnica e passi uno per uno. Ti manca un ingrediente? Tocca "Non ce l'ho" per i sostituti.
+Dosi esatte, passo dopo passo
 ```
 
-**Descrizione** (2304/4000): stessa descrizione completa di Google Play, sopra.
-
-**Parole chiave** (98/100, separate da virgola, senza spazi):
+**Testo promozionale** (facoltativo, modificabile senza nuova versione) (142/170):
 ```
-barman,bartender,drink,aperitivo,spritz,negroni,mojito,dispensa,offline,mixology,shaker,analcolico
+Trova un cocktail in pochi secondi: dosi esatte, bicchiere, tecnica e passi uno per uno. Ti manca un ingrediente? Tocca "Non ce l'ho". Gratis.
 ```
 
-**Novità della versione** (max 4000, qui 352): stesso testo di Google Play.
+**Descrizione** (2466/4000): stessa descrizione completa di Google Play, sopra.
 
+**Parole chiave** (100/100), separate da virgola, senza spazi (non ripetono parole del titolo):
+```
+cocktail,barman,bartender,drink,aperitivo,spritz,negroni,mojito,dispensa,offline,mixology,analcolico
+```
+
+**Novità della versione** (max 4000, qui 360): stesso testo di Google Play.
