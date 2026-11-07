@@ -3,22 +3,19 @@ import { Button } from '../components/Button'
 import { DrinkCard } from '../components/DrinkCard'
 import { EmptyState } from '../components/EmptyState'
 import { Icon } from '../components/Icon'
-import { Paywall } from '../components/Paywall'
-import { PRO_ENABLED } from '../config/features'
 import { SearchBar } from '../components/SearchBar'
 import { useLang, useT } from '../i18n'
 import { ingName } from '../lib/catalog'
 import { checkDrink, drinksICanMake } from '../lib/pantry'
 import { searchDrinks } from '../lib/search'
 import { back, navigate, paths } from '../router'
-import { usePantry, usePlan } from '../state/store'
+import { usePantry } from '../state/store'
 
 type Tab = 'ready' | 'withSubs' | 'missingOne'
 
 export default function CanMakeScreen() {
   const t = useT()
   const lang = useLang()
-  const { isPro } = usePlan()
   const { pantry } = usePantry()
   const [tab, setTab] = useState<Tab>('ready')
   const [q, setQ] = useState('')
@@ -43,7 +40,6 @@ export default function CanMakeScreen() {
       <h1 className="font-display m-0 text-[30px]">{t.canMake.title}</h1>
     </div>
   )
-  if (PRO_ENABLED && !isPro) return <div>{header}<Paywall /></div>
 
   const tabs: { key: Tab; label: string; n: number }[] = [
     { key: 'ready', label: t.pantry.ready, n: res.ready.length },

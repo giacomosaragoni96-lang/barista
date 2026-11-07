@@ -1,4 +1,3 @@
-import type { Plan } from '../plan'
 import { MAX_RECENTS, normalizeSettings, type UserDataRepo } from './repo'
 
 const K = {
@@ -6,8 +5,10 @@ const K = {
   favorites: 'barista:v1:favorites',
   recents: 'barista:v1:recents',
   settings: 'barista:v1:settings',
-  plan: 'barista:v1:plan',
 }
+
+/** Chiave di una vecchia versione (piano a pagamento, oggi rimosso): ignorata e cancellata al caricamento. */
+const LEGACY_PLAN_KEY = 'barista:v1:plan'
 
 function read(key: string): unknown {
   try {
@@ -29,8 +30,20 @@ function write(key: string, value: unknown): void {
 const strings = (v: unknown): string[] =>
   Array.isArray(v) ? v.filter((x): x is string => typeof x === 'string') : []
 
+let legacyDropped = false
+function dropLegacyPlan(): void {
+  if (legacyDropped) return
+  legacyDropped = true
+  try {
+    localStorage.removeItem(LEGACY_PLAN_KEY)
+  } catch {
+    /* ignora */
+  }
+}
+
 export const localRepo: UserDataRepo = {
   async getPantry() {
+    dropLegacyPlan()
     return strings(read(K.pantry))
   },
   async setPantry(ids) {
@@ -54,19 +67,10 @@ export const localRepo: UserDataRepo = {
   async setSettings(s) {
     write(K.settings, s)
   },
-  async getPlan(): Promise<Plan> {
-    const v = read(K.plan) as Partial<Plan> | undefined
-    if (v && (v.status === 'trial' || v.status === 'pro' || v.status === 'free')) {
-      return { status: v.status, until: typeof v.until === 'string' ? v.until : undefined }
-    }
-    return { status: 'free' }
-  },
-  async setPlan(p) {
-    write(K.plan, p)
-  },
   async clearAll() {
     try {
       Object.values(K).forEach((k) => localStorage.removeItem(k))
+      localStorage.removeItem(LEGACY_PLAN_KEY)
     } catch {
       /* ignora */
     }

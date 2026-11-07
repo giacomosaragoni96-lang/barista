@@ -4,8 +4,6 @@ import { Button } from '../components/Button'
 import { ConfirmSheet } from '../components/ConfirmSheet'
 import { EmptyState } from '../components/EmptyState'
 import { Icon } from '../components/Icon'
-import { Paywall } from '../components/Paywall'
-import { PRO_ENABLED } from '../config/features'
 import { SearchBar } from '../components/SearchBar'
 import { tap } from '../hooks/haptic'
 import { useLang, useT } from '../i18n'
@@ -13,14 +11,13 @@ import { ingredientsByCategory } from '../lib/catalog'
 import { BASIC_KIT } from '../lib/pantry'
 import { normalize } from '../lib/normalize'
 import { navigate, paths } from '../router'
-import { usePantry, usePlan } from '../state/store'
+import { usePantry } from '../state/store'
 
 const ORDER: IngredientCategory[] = ['spirit', 'liqueur', 'vermouth', 'amaro', 'bitter', 'wine', 'sparkling', 'beer', 'juice', 'syrup', 'soda', 'dairy', 'fresh', 'spice', 'garnish', 'other']
 
 export default function PantryScreen() {
   const t = useT()
   const lang = useLang()
-  const { isPro } = usePlan()
   const { pantry, has, toggle, addMany, clear } = usePantry()
   const [q, setQ] = useState('')
   const [open, setOpen] = useState<Set<string>>(new Set())
@@ -37,15 +34,6 @@ export default function PantryScreen() {
       return { cat, total: all.length, list }
     }).filter((g) => g.list.length)
   }, [q, lang])
-
-  if (PRO_ENABLED && !isPro) {
-    return (
-      <div>
-        <h1 className="font-display m-0 px-5 pt-6 text-[32px]">{t.pantry.title}</h1>
-        <Paywall />
-      </div>
-    )
-  }
 
   const toggleOpen = (c: string) => setOpen((s) => { const n = new Set(s); if (!n.delete(c)) n.add(c); return n })
   const searching = q.trim().length > 0

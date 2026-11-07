@@ -6,8 +6,6 @@ import { GlassIcon } from '../components/GlassIcon'
 import { Icon } from '../components/Icon'
 import { IngredientRow } from '../components/IngredientRow'
 import { MissingSheet } from '../components/MissingSheet'
-import { PaywallSheet } from '../components/Paywall'
-import { PRO_ENABLED } from '../config/features'
 import { ScaleStepper } from '../components/ScaleStepper'
 import { StepList } from '../components/StepList'
 import { UnitToggle } from '../components/UnitToggle'
@@ -17,7 +15,7 @@ import { getSubstitutes } from '../lib/alternatives'
 import { getDrink, ingName } from '../lib/catalog'
 import { formatAmount } from '../lib/units'
 import { back, navigate, paths, useRoute } from '../router'
-import { useFavorites, usePantry, usePlan, useRecents, useSettings } from '../state/store'
+import { useFavorites, usePantry, useRecents, useSettings } from '../state/store'
 
 function Badge({ children, title }: { children: React.ReactNode; title?: string }) {
   return (
@@ -35,14 +33,12 @@ export default function DrinkScreen() {
   const fav = useFavorites()
   const recents = useRecents()
   const settings = useSettings()
-  const { isPro } = usePlan()
   const { pantry, has } = usePantry()
 
   const [scale, setScale] = useState(1)
   const [subs, setSubs] = useState<Record<string, string>>({})
   const [missing, setMissing] = useState<string[]>([])
   const [sheetFor, setSheetFor] = useState<string | null>(null)
-  const [paywall, setPaywall] = useState(false)
 
   useWakeLock(true)
   const pushRecent = recents.push
@@ -50,8 +46,7 @@ export default function DrinkScreen() {
   // nuova ricetta = sessione nuova
   useEffect(() => { setScale(1); setSubs({}); setMissing([]); setSheetFor(null) }, [params.id])
 
-  const unlocked = !PRO_ENABLED || isPro
-  const pantryOn = unlocked && pantry.size > 0
+  const pantryOn = pantry.size > 0
   const steps = useMemo(() => {
     if (!drink) return []
     return drink.steps.map((s) => {
@@ -171,7 +166,7 @@ export default function DrinkScreen() {
 
       <div className="mt-7 flex items-center justify-between gap-3 px-4">
         <UnitToggle value={settings.units} onChange={settings.setUnits} />
-        <ScaleStepper value={scale} onChange={setScale} locked={!unlocked} onLockedTap={() => setPaywall(true)} />
+        <ScaleStepper value={scale} onChange={setScale} />
       </div>
 
       <section ref={ingRef} className="recipe-section mt-8 px-4" aria-labelledby="ing-h">
@@ -229,7 +224,6 @@ export default function DrinkScreen() {
         missing={missing}
         onUse={(subId) => sheetFor && setSubs((s) => ({ ...s, [sheetFor]: subId }))}
       />
-      {PRO_ENABLED && <PaywallSheet open={paywall} onClose={() => setPaywall(false)} />}
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { localRepo } from '../storage/localRepo'
 import { defaultSettings, normalizeSettings, withLang, withUnits } from '../storage/repo'
-import { currencyForLang, formatPrice, prices } from '../../config/pricing'
 
 const KEY = 'barista:v1:settings'
 let store: Record<string, string>
@@ -80,17 +79,12 @@ describe('migrazione impostazioni salvate', () => {
   })
 })
 
-describe('prezzi per lingua', () => {
-  it('valuta per lingua', () => {
-    expect(currencyForLang('en')).toBe('USD')
-    expect(currencyForLang('it')).toBe('EUR')
-    expect(prices.EUR.monthly).toBe(4.99)
-  })
-  it('formatPrice en-US e it-IT', () => {
-    expect(formatPrice(4.99, 'en')).toBe('$4.99')
-    expect(formatPrice(39, 'en')).toBe('$39')
-    expect(formatPrice(4.99, 'it').replace(/\s/g, ' ')).toBe('4,99 €')
-    expect(formatPrice(39, 'it').replace(/\s/g, ' ')).toBe('39 €')
-    expect(formatPrice(4.99, 'it', 'USD')).toContain('4,99')
+describe('chiave del vecchio piano', () => {
+  it('uno storage con barista:v1:plan non da errori e non cambia le impostazioni', async () => {
+    store['barista:v1:settings'] = JSON.stringify({ lang: 'it', units: 'cl', unitsChosen: true })
+    store['barista:v1:plan'] = JSON.stringify({ status: 'trial', until: '2026-12-01' })
+    expect(await localRepo.getPantry()).toEqual([])
+    expect(await localRepo.getSettings()).toMatchObject({ lang: 'it', units: 'cl', unitsChosen: true })
+    expect(store['barista:v1:settings']).toBeDefined()
   })
 })

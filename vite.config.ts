@@ -12,9 +12,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
       manifest: {
-        name: 'Barista',
-        short_name: 'Barista',
-        description: 'Drink recipes for bartenders at work: measures, glass, technique and substitutes.',
+        name: 'Barback',
+        short_name: 'Barback',
+        description: 'Cocktail recipes for bartenders at work: exact measures, glass, technique, steps and quick substitutes.',
         lang: 'en',
         start_url: '/barista/',
         scope: '/barista/',

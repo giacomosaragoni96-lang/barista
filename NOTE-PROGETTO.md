@@ -3,7 +3,7 @@
 ## Obiettivo
 - PWA mobile-first per baristi al lavoro: cerchi un drink e vedi dosi, bicchiere, tecnica e passi.
 - Tasto "Non ce l'ho" su un ingrediente: propone sostituti o drink simili.
-- Dispensa a spunta salvata sul dispositivo (funzione "Pro" finta, freemium).
+- Dispensa a spunta salvata sul dispositivo, gratuita per tutti.
 - Italiano + inglese. Tema scuro.
 - Scadenza prodotto finito: 16:00 del 6 novembre 2026.
 
@@ -11,7 +11,7 @@
 - Lingue: it + en, ogni testo e L10n.
 - Niente login/Supabase oggi (limite piano gratuito): strato dati predisposto con `repo.ts` (oggi `localRepo.ts` su localStorage, domani `supabaseRepo.ts`).
 - Hosting: GitHub Pages (base `/barista/`).
-- Freemium finto: prova 14 giorni sbloccata in locale. Prezzi segnaposto 4,99 EUR/mese e 39 EUR/anno in `src/config/pricing.ts`.
+- Nessun piano a pagamento: l app e completamente gratuita (Pro rimosso il 7 nov 2026; il codice di Pro resta nella storia git, commit c35ae5b, se un giorno servira).
 - Solo tema scuro (sfondo #0E0C0A, testo crema #F5EBDD, ambra #E8A33D).
 - Nessuna AI nell'app.
 
@@ -38,10 +38,8 @@ Regole dati: `src/data/types.ts` e il contratto comune (non cambiarlo senza coor
 - `src/lib/alternatives.ts`: `getSubstitutes(ingId, pantry?): {ingredient, quality, note, inPantry?}[]`; `getSimilarDrinks(drinkId, missing: string[], pantry?, limit=4): {drink, reason: L10n, feasible?}[]` (punteggio: stessa famiglia +3, stessa base +3, ingredienti in comune, gusti in comune; esclude drink che contengono i mancanti).
 - `src/lib/pantry.ts`: `checkDrink(drink, pantry: Set<string>|string[]): {status:'ok'|'substitute'|'missing', missing: string[], subs: {from,to}[]}` (guarnizioni, opzionali e assumed non bloccano); `drinksICanMake(pantry): {ready, withSubs, missingOne}`; `BASIC_KIT: string[]`.
 - `src/lib/units.ts`: `formatAmount(amount, unit, system: 'ml'|'cl'|'oz', scale, lang): string` (1 oz = 30 ml, arrotonda a 0,25).
-- `src/lib/plan.ts`: `isPro()`, `startTrial()`, `PRO_FEATURES`.
 - `src/lib/storage/repo.ts`: interfaccia `UserDataRepo` asincrona (pantry, favorites, recents, settings, plan: get/set); `localRepo.ts` la implementa su localStorage con chiavi `barista:*` versionate; domani `supabaseRepo.ts`.
 - `src/state/store.ts`: `usePantry()`, `useFavorites()`, `useRecents()`, `useSettings()` (lang, units), `usePlan()`; ognuno restituisce valore + azioni; basato su useSyncExternalStore.
-- `src/config/pricing.ts`: prezzi segnaposto.
 
 ## Compiti
 | # | Compito | Stato |
@@ -59,6 +57,8 @@ Regole dati: `src/data/types.ts` e il contratto comune (non cambiarlo senza coor
 | T11 | Allineamento al ricettario SIB (IBA 2021), inglese perfetto, inglese lingua principale | fatto (6 nov sera: 3 drink nuovi, 213 drink, 190 test, controllo finale VA BENE) |
 | T12 | Barra di ricerca in "Cosa posso fare" (filtra i drink fattibili nelle tre schede, numeri aggiornati, messaggio se il risultato sta in un'altra scheda) | fatto (6 nov sera, 185 test verdi, provato dal vivo a 375px) |
 | T13 | App completamente gratuita: interruttore src/config/features.ts (PRO_ENABLED=false) sblocca tutto e nasconde Pro/prova/prezzi/paywall; codice Pro spento ma intatto | fatto (6 nov sera, 187 test verdi, qualita OK; i testi Pro restano nel bundle JS ma non vengono mostrati) |
+| T14 | Pacchetto store in docs/store (testi, bozze privacy, risposte moduli, screenshot, feature graphic, icona 1024, checklist); icone opache; etichette it tradotte | fatto (7 nov notte) |
+| T15 | Pro RIMOSSO del tutto (codice, testi, prezzi, store); app rinominata Barback (titolo store unico, es. "Barback: Recipes & Subs"); manifest Barback | fatto (7 nov mattina, 184 test verdi, build senza parole Pro) |
 | T14 | Pacchetto store in docs/store (testi EN/IT, bozze privacy con segnaposto, risposte moduli, 24 screenshot, feature graphic, icona 1024, checklist); icone maskable/apple opache; etichette it tradotte | fatto (7 nov notte, 187 test verdi); da decidere: nome, email, store, dominio |
 
 ## Come riprendere
@@ -95,6 +95,5 @@ Regole dati: `src/data/types.ts` e il contratto comune (non cambiarlo senza coor
 ## Cosa resta aperto (prossimi passi, in ordine)
 1. Drink ancora fuori: Angelo Azzurro e Cuba Pantera (non sono nel ricettario SIB). Rose ha il tag contemporary ma non e nel PDF: dosi originali. Dubbi di contenuto da un barman: Trinidad Sour (la SIB dice stir), Mai Tai (rhum Martinique reso con rhum agricole), Zombie (Demerara reso con overproof).
 2. Supabase + login (email, poi Google): implementare src/lib/storage/supabaseRepo.ts con la stessa interfaccia UserDataRepo e scegliere il repo in storage/index.ts. Limite piano gratuito: 2 progetti attivi (l'utente deve metterne in pausa uno o passare a Pro).
-3. Pagamenti reali (Stripe) al posto del paywall finto; prezzi in src/config/pricing.ts.
-4. Piccolezze: Paywall.tsx ricava '14' dal testo i18n (usare pricing.trialDays); versione '1.0.0' fissa in SettingsScreen.tsx (leggere da package.json).
+3. Pagamenti: oggi non esistono (app gratuita). Se si introduce Pro, ripartire dal commit c35ae5b.
 5. Idee: tema chiaro, foto drink, food cost per drink, condivisione ricetta, modalita' 'batch' per eventi.

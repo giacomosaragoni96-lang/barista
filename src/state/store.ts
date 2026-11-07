@@ -2,8 +2,6 @@ import { useMemo, useSyncExternalStore } from 'react'
 import type { Lang } from '../data/types'
 import { repo, type Settings } from '../lib/storage'
 import { MAX_RECENTS, defaultSettings, withLang, withUnits } from '../lib/storage/repo'
-import { PRO_ENABLED } from '../config/features'
-import { isPro, startTrial as makeTrial, type Plan } from '../lib/plan'
 
 interface State {
   hydrated: boolean
@@ -11,7 +9,6 @@ interface State {
   favorites: string[]
   recents: string[]
   settings: Settings
-  plan: Plan
 }
 
 let state: State = {
@@ -20,7 +17,6 @@ let state: State = {
   favorites: [],
   recents: [],
   settings: defaultSettings(),
-  plan: { status: 'free' },
 }
 
 const listeners = new Set<() => void>()
@@ -34,12 +30,11 @@ let hydrating: Promise<void> | null = null
 export function hydrate(): Promise<void> {
   hydrating ??= (async () => {
     try {
-      const [pantry, favorites, recents, settings, plan] = await Promise.all([
+      const [pantry, favorites, recents, settings] = await Promise.all([
         repo.getPantry(),
         repo.getFavorites(),
         repo.getRecents(),
         repo.getSettings(),
-        repo.getPlan(),
       ])
       set({
         hydrated: true,
@@ -47,7 +42,6 @@ export function hydrate(): Promise<void> {
         favorites,
         recents,
         settings: settings ?? state.settings,
-        plan,
       })
     } catch {
       set({ hydrated: true })
@@ -116,15 +110,6 @@ const settingsActions = {
   setUnits: (units: Settings['units']) => saveSettings(withUnits(state.settings, units)),
 }
 
-const planActions = {
-  startTrial() {
-    if (!PRO_ENABLED) return // app gratuita: nessuna prova da attivare
-    const p = makeTrial()
-    set({ plan: p })
-    void repo.setPlan(p)
-  },
-}
-
 // ---- hook ----
 export function usePantry() {
   const { pantry } = useStore()
@@ -147,11 +132,6 @@ export function useRecents() {
 export function useSettings() {
   const { settings } = useStore()
   return useMemo(() => ({ lang: settings.lang, units: settings.units, ...settingsActions }), [settings])
-}
-
-export function usePlan() {
-  const { plan } = useStore()
-  return useMemo(() => ({ plan, isPro: isPro(plan), proEnabled: PRO_ENABLED, ...planActions }), [plan])
 }
 
 export function useHydrated(): boolean {

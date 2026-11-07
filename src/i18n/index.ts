@@ -16,10 +16,12 @@ function applyDocument(lang: Lang) {
   const { title, description } = dicts[lang].meta
   document.documentElement.lang = lang
   document.title = title
-  for (const sel of ['meta[name="description"]', 'meta[property="og:description"]']) {
+  for (const sel of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) {
     document.head.querySelector(sel)?.setAttribute('content', description)
   }
-  document.head.querySelector('meta[property="og:title"]')?.setAttribute('content', title)
+  for (const sel of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) {
+    document.head.querySelector(sel)?.setAttribute('content', title)
+  }
 }
 applyDocument(current)
 

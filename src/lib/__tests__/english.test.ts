@@ -404,7 +404,7 @@ function hardcoded(src: string): string[] {
 }
 
 /** Testi ammessi (simboli, marchi, nomi di formato). */
-const TSX_ALLOW = new Set<string>(['Barista', 'PRO', 'ml', 'cl', 'oz', 'x'])
+const TSX_ALLOW = new Set<string>(['Barista', 'Barback', 'ml', 'cl', 'oz', 'x'])
 
 describe('nessun testo fisso nei .tsx di components e screens', () => {
   const files = ['src/components', 'src/screens'].flatMap((dir) =>

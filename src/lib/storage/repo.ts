@@ -1,5 +1,4 @@
 import type { Lang } from '../../data/types'
-import type { Plan } from '../plan'
 
 export type Units = 'ml' | 'cl' | 'oz'
 
@@ -65,8 +64,6 @@ export interface UserDataRepo {
   /** null se mai salvate */
   getSettings(): Promise<Settings | null>
   setSettings(s: Settings): Promise<void>
-  getPlan(): Promise<Plan>
-  setPlan(p: Plan): Promise<void>
   clearAll(): Promise<void>
 }
 
