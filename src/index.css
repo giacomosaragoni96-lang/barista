@@ -100,8 +100,8 @@ p { text-wrap: pretty; }
 .section-icon { display: flex; height: 40px; width: 40px; flex-shrink: 0; align-items: center; justify-content: center; border-radius: 12px; background: var(--color-surface-2); color: var(--color-amber); }
 
 /* Barra appiccicata della ricetta */
-.recipe-bar { position: sticky; top: 0; z-index: 20; padding: 8px 8px 6px; transition: background-color 160ms, border-color 160ms; border-bottom: 1px solid transparent; }
-.recipe-bar[data-stuck="true"] { background: color-mix(in srgb, var(--color-bg) 97%, transparent); backdrop-filter: blur(10px); border-bottom-color: var(--color-line); }
+.recipe-bar { position: sticky; top: 0; z-index: 20; padding: 8px 8px 6px; background: var(--color-bg); transition: border-color 160ms; border-bottom: 1px solid transparent; }
+.recipe-bar[data-stuck="true"] { border-bottom-color: var(--color-line); }
 .jump { display: inline-flex; flex: 1 1 0; min-width: 0; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 6px; border-radius: 999px; border: 1px solid var(--color-line); background: var(--color-surface); color: var(--color-cream); font-size: 15px; font-weight: 600; white-space: nowrap; transition: background-color 160ms, border-color 160ms, color 160ms; }
 .jump[aria-current="true"] { background: var(--color-amber); border-color: var(--color-amber); color: #1A1005; }
 

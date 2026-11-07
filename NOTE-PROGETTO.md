@@ -58,7 +58,7 @@ Regole dati: `src/data/types.ts` e il contratto comune (non cambiarlo senza coor
 | T12 | Barra di ricerca in "Cosa posso fare" (filtra i drink fattibili nelle tre schede, numeri aggiornati, messaggio se il risultato sta in un'altra scheda) | fatto (6 nov sera, 185 test verdi, provato dal vivo a 375px) |
 | T13 | App completamente gratuita: interruttore src/config/features.ts (PRO_ENABLED=false) sblocca tutto e nasconde Pro/prova/prezzi/paywall; codice Pro spento ma intatto | fatto (6 nov sera, 187 test verdi, qualita OK; i testi Pro restano nel bundle JS ma non vengono mostrati) |
 | T15 | Pro RIMOSSO del tutto (codice, testi, prezzi, store); app rinominata Barback (titolo store unico, es. "Barback: Recipes & Subs"); manifest Barback | fatto (7 nov mattina, 184 test verdi, build senza parole Pro) |
-| T16 | Pacchetto store rifatto con nome Barback (titolo unico + 3 alternative, sezione Rischio nome, 24 screenshot, feature graphic) | fatto (7 nov mattina). Aperto: barra alta della ricetta lascia trasparire il testo sotto; nome sviluppatore ed email ancora segnaposto |
+| T16 | Pacchetto store rifatto con nome Barback (titolo unico + 3 alternative, sezione Rischio nome, 24 screenshot, feature graphic) | fatto (7 nov mattina). Barra alta della ricetta resa opaca (7 nov); aperto: nome sviluppatore ed email ancora segnaposto |
 | T14 | Pacchetto store in docs/store (testi EN/IT, bozze privacy con segnaposto, risposte moduli, 24 screenshot, feature graphic, icona 1024, checklist); icone maskable/apple opache; etichette it tradotte | fatto (7 nov notte, 187 test verdi); da decidere: nome, email, store, dominio |
 
 ## Come riprendere
